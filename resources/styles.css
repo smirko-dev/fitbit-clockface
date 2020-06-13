@@ -1,0 +1,63 @@
+.background {
+  viewport-fill: black;
+}
+
+#hourLabel {
+  font-size: 120;
+  font-family: Colfax-Thin;
+  text-length: 32;
+  text-anchor: middle;
+  x: 28%;
+  y: 50%+20;
+  fill: #2490DD;
+}
+
+#minuteLabel {
+  font-size: 86;
+  font-family: Colfax-Thin;
+  text-length: 32;
+  text-anchor: middle;
+  x: 60%;
+  y: 50%+20;
+  fill: white;
+}
+
+#secondLabel {
+  font-size: 36;
+  font-family: Colfax-Thin;
+  text-length: 32;
+  text-anchor: middle;
+  x: 82%;
+  y: 50%+20;
+  fill: white;
+}
+
+#dateLabel {
+  font-size: 24;
+  font-family: Colfax-Thin;
+  text-length: 32;
+  text-anchor: start;
+  x: 10%;
+  y: 10%;
+  fill: white;
+}
+
+#appointmentsLabel {
+  font-size: 32;
+  font-family: Colfax-Thin;
+  text-length: 128;
+  text-anchor: start;
+  x: 0%;
+  y: 70%;
+  width: 90%;
+  fill: white;
+}
+
+#batteryLabel {
+  font-size: 24;
+  font-family: Colfax-Thin;
+  text-length: 32;
+  x: 80%;
+  y: 10%;
+  fill: white;
+}

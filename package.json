@@ -1,0 +1,25 @@
+{
+  "fitbit": {
+    "appUUID": "ae441b73-2660-407f-b796-a98d1d0583a0",
+    "appType": "clockface",
+    "appDisplayName": "MyClock",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "",
+    "requestedPermissions": [
+      "access_activity",
+      "access_calendar"
+    ],
+    "buildTargets": [
+      "higgs"
+    ],
+    "i18n": {
+      "en": {
+        "name": "MyClock"
+      }
+    },
+    "defaultLanguage": "en-US"
+  },
+  "devDependencies": {
+    "@fitbit/sdk": "~4.1.0"
+  }
+}
