@@ -1,5 +1,5 @@
 import clock from "clock";
-import { preferences, locale  } from "user-settings";
+import { preferences, locale } from "user-settings";
 import { gettext } from "i18n";
 import * as util from "../common/utils";
 
@@ -10,6 +10,7 @@ export function initialize(granularity, callback) {
   clock.granularity = granularity ? granularity : "minutes";
   handleClockTickCallback = callback;
   clock.addEventListener("tick", tick);
+  console.log(locale.language);
 }
 
 export function tick(evt) {
@@ -29,7 +30,18 @@ export function tick(evt) {
   
   const days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
   const months = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
-  const date = gettext(days[today.getDay()]) + ", " + gettext(months[today.getMonth()]) + " " + util.dayString(today.getDate());
+  let date = "";
+
+  switch (locale.language) {
+    case "de-de":
+      date = gettext(days[today.getDay()]) + ", " + today.getDate() + "." + gettext(months[today.getMonth()]);
+      break;
+    case "en-us": 
+    case "en-gb": 
+    default:
+      date = gettext(days[today.getDay()]) + ", " + gettext(months[today.getMonth()]) + " " + util.dayString(today.getDate());
+      break;
+  }
 
   if (typeof handleClockTickCallback === "function") {
     handleClockTickCallback({ hours: `${hours}`, minutes : `${mins}`, seconds : `${secs}`, date : `${date}`, ampm : `${ampm}` });
