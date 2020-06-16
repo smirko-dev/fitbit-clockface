@@ -15,6 +15,7 @@ const secondLabel = document.getElementById("secondLabel");
 const dateLabel = document.getElementById("dateLabel");
 const appointmentsLabel = document.getElementById("appointmentsLabel");
 const batteryImage = document.getElementById("batteryImage");
+const batteryLabel = document.getElementById("batteryLabel");
 
 clock.initialize("seconds", data => {
   // Update <text> elements with each tick
@@ -28,6 +29,7 @@ clock.initialize("seconds", data => {
 
 battery.onchange = (evt) => {
   // Update the battery <text> element every time when battery changed
+  batteryLabel.text = Math.floor(battery.chargeLevel) + "%";
   const level = Math.floor(battery.chargeLevel / 10) * 10;
   if (level < 20) {
     batteryImage.image = `battery-alert.png`;

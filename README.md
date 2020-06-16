@@ -9,7 +9,7 @@ This is a simple clock face for Fitbit Ionic.
 It comes with
 - time, date
 - languages: de, en
-- battery status in percentage 
+- battery icon with status in percentage
 - next calendar event of the current day
 
 The clockface is based on https://github.com/Fitbit/sdk-calendar-clock/.

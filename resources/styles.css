@@ -33,8 +33,8 @@
 }
 
 #dateLabel {
-  font-size: 24;
-  font-family: Colfax-Thin;
+  font-size: 20;
+  font-family: Colfax-Light;
   text-length: 32;
   text-anchor: start;
   x: 15%;
@@ -43,12 +43,22 @@
 }
 
 #appointmentsLabel {
-  font-size: 32;
-  font-family: Colfax-Thin;
+  font-size: 24;
+  font-family: Colfax-Light;
   text-length: 128;
   text-anchor: start;
   x: 0%;
   y: 70%;
   width: 90%;
+  fill: white;
+}
+
+#batteryLabel {
+  font-size: 20;
+  font-family: Colfax-Light;
+  text-length: 32;
+  text-anchor: start;
+  x: 85%;
+  y: 10%;
   fill: white;
 }
