@@ -37,7 +37,7 @@
   font-family: Colfax-Thin;
   text-length: 32;
   text-anchor: start;
-  x: 10%;
+  x: 15%;
   y: 10%;
   fill: white;
 }
@@ -50,14 +50,5 @@
   x: 0%;
   y: 70%;
   width: 90%;
-  fill: white;
-}
-
-#batteryLabel {
-  font-size: 24;
-  font-family: Colfax-Thin;
-  text-length: 32;
-  x: 80%;
-  y: 10%;
   fill: white;
 }

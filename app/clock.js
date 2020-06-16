@@ -10,7 +10,6 @@ export function initialize(granularity, callback) {
   clock.granularity = granularity ? granularity : "minutes";
   handleClockTickCallback = callback;
   clock.addEventListener("tick", tick);
-  console.log(locale.language);
 }
 
 export function tick(evt) {
