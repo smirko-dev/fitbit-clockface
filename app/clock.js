@@ -43,6 +43,6 @@ export function tick(evt) {
   }
 
   if (typeof handleClockTickCallback === "function") {
-    handleClockTickCallback({ hours: `${hours}`, minutes : `${mins}`, seconds : `${secs}`, date : `${date}`, ampm : `${ampm}` });
+    handleClockTickCallback({ hours: `${hours}`, minutes : `${mins}`, seconds : `${secs}`, date : `${date}` });
   }
 }
