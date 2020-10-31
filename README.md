@@ -12,8 +12,6 @@ It comes with
 - battery icon with status in percentage
 - next calendar event of the current day
 
-GitHub link: https://github.com/smirko-dev/fitbit-clockface.
-
 The clockface is based on https://github.com/Fitbit/sdk-calendar-clock/.
 
 Icons are from https://materialdesignicons.com/ ([Apache license version 2.0](https://www.apache.org/licenses/LICENSE-2.0.html)). 
