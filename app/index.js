@@ -51,6 +51,9 @@ function renderAppointment() {
     const date = fromEpochSec(event.startDate);
     appointmentsLabel.text = timeString(date) + " " + event.title;
   }
+  else {
+    appointmentsLabel.text = ""
+  }
 }
 
 function renderBattery() {
