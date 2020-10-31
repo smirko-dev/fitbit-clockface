@@ -3,31 +3,21 @@
 }
 
 #hourLabel {
-  font-size: 120;
+  font-size: 124;
   font-family: Colfax-Thin;
   text-length: 32;
   text-anchor: middle;
-  x: 28%;
+  x: 40%;
   y: 50%+20;
   fill: #2490DD;
 }
 
 #minuteLabel {
-  font-size: 86;
+  font-size: 72;
   font-family: Colfax-Thin;
   text-length: 32;
   text-anchor: middle;
-  x: 60%;
-  y: 50%+20;
-  fill: white;
-}
-
-#secondLabel {
-  font-size: 36;
-  font-family: Colfax-Thin;
-  text-length: 32;
-  text-anchor: middle;
-  x: 82%;
+  x: 72%;
   y: 50%+20;
   fill: white;
 }

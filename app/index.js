@@ -11,31 +11,24 @@ import { fromEpochSec, timeString } from "../common/utils";
 // Get a handle on the <text> elements
 const hourLabel = document.getElementById("hourLabel");
 const minuteLabel = document.getElementById("minuteLabel");
-const secondLabel = document.getElementById("secondLabel");
 const dateLabel = document.getElementById("dateLabel");
 const appointmentsLabel = document.getElementById("appointmentsLabel");
 const batteryImage = document.getElementById("batteryImage");
 const batteryLabel = document.getElementById("batteryLabel");
 
-clock.initialize("seconds", data => {
+clock.initialize("minutes", data => {
   // Update <text> elements with each tick
   hourLabel.text = data.hours;
   minuteLabel.text = data.minutes;
-  secondLabel.text = data.seconds;
   dateLabel.text = data.date;
   // Update appointment
   renderAppointment();
+  // Update battery
+  renderBattery();
 });
 
 battery.onchange = (evt) => {
-  // Update the battery <text> element every time when battery changed
-  batteryLabel.text = Math.floor(battery.chargeLevel) + "%";
-  const level = Math.floor(battery.chargeLevel / 10) * 10;
-  if (level < 20) {
-    batteryImage.image = `battery-alert.png`;
-  } else {
-    batteryImage.image = `battery-${Math.floor(battery.chargeLevel / 10) * 10}.png`;
-  }
+  renderBattery();
 }
 
 appointment.initialize(() => {
@@ -47,6 +40,7 @@ display.addEventListener("change", () => {
   // Update appointment on display on
   if (display.on) {
     renderAppointment();
+    renderBattery();
   }
 });
 
@@ -56,5 +50,16 @@ function renderAppointment() {
   if (event) {
     const date = fromEpochSec(event.startDate);
     appointmentsLabel.text = timeString(date) + " " + event.title;
+  }
+}
+
+function renderBattery() {
+  // Update the battery <text> element every time when battery changed
+  batteryLabel.text = Math.floor(battery.chargeLevel) + "%";
+  const level = Math.floor(battery.chargeLevel / 10) * 10;
+  if (level < 20) {
+    batteryImage.image = `battery-alert.png`;
+  } else {
+    batteryImage.image = `battery-${Math.floor(battery.chargeLevel / 10) * 10}.png`;
   }
 }
