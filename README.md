@@ -2,13 +2,14 @@
 
 ![languages](https://img.shields.io/badge/languages-JavaScript%20|%20CSS-blue)
 ![platform](https://img.shields.io/badge/platform-Fitbit%20Ionic-silver)
+![version](https://img.shields.io/badge/version-%201.0.1-green)
 
-## Description 
+## Description
 
-This is a simple clock face for Fitbit Ionic. 
+This is a simple clock face for Fitbit Ionic.
 It comes with
-- time, date
-- languages: de, en
+- time (12/24hr format), date (including weekday)
+- languages: de-DE, en-EN
 - battery icon with status in percentage
 - next calendar event of the current day
 
