@@ -2,7 +2,7 @@
 
 ![languages](https://img.shields.io/badge/languages-JavaScript%20|%20CSS-blue)
 ![platform](https://img.shields.io/badge/platform-Fitbit%20Ionic-silver)
-![version](https://img.shields.io/badge/version-%201.0.1-green)
+![version](https://img.shields.io/badge/version-%201.1.1-green)
 
 ## Description
 
