@@ -16,6 +16,11 @@ jobs:
     steps:
     - name: Checkout master
       uses: actions/checkout@master
+      with:
+          lfs: true
+
+    - name: Checkout LFS objects
+      run: git lfs checkout
 
     - name: Setup node
       uses: actions/setup-node@v1
