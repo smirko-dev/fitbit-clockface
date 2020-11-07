@@ -3,6 +3,8 @@
 ![languages](https://img.shields.io/badge/languages-JavaScript%20|%20CSS-blue)
 ![platform](https://img.shields.io/badge/platform-Fitbit%20Ionic-silver)
 ![version](https://img.shields.io/badge/version-%201.2.0-green)
+[![FitbitBuild Actions Status](https://github.com/smirko-dev/fitbit-clockface/workflows/FitbitBuild/badge.svg)](https://github.com/smirko-dev/fitbit-clockface/actions)
+
 
 ## Description
 
