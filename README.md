@@ -20,6 +20,7 @@ The clockface is based on https://github.com/Fitbit/sdk-calendar-clock/.
 
 Icons are from https://materialdesignicons.com/ ([Apache license version 2.0](https://www.apache.org/licenses/LICENSE-2.0.html)). 
 
-## Screenshot
+## Screenshots
 
-![Screenshot](screenshot.png)
+![Appointment](screenshot.png)
+![Activity](screenshot2.png)

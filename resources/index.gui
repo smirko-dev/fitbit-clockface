@@ -2,9 +2,9 @@
   <text id="hourLabel" />
   <text id="minuteLabel" />
   <text id="dateLabel" opacity=".75" />
-  <textarea id="appointmentsLabel" opacity="0" />
+  <textarea id="appointmentsLabel" opacity=".75" />
   <image id="batteryImage" href="battery-alert.png" x="275" y="5" width="24" height="24" fill="white" opacity=".5" />
   <text id="batteryLabel" opacity=".75" />
-  <image id="footstepImage" href="shoe-print.png" x="110" y="210" width="32" height="32" fill="blue" opacity="1." />
-  <text id="activityLabel" />
+  <image id="footstepImage" href="shoe-print.png" x="110" y="210" width="32" height="32" fill="blue" opacity=".75" />
+  <text id="activityLabel" opacity=".75" />
 </svg>
