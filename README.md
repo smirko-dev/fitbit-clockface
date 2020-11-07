@@ -19,7 +19,18 @@ It comes with
 The clockface is based on https://github.com/Fitbit/sdk-calendar-clock/.
 
 Icons are from https://materialdesignicons.com/ ([Apache license version 2.0](https://www.apache.org/licenses/LICENSE-2.0.html)). 
+
 ## Screenshot
 
-
 ![Screenshot](screenshot.png)
+
+## How to build
+
+```
+git clone git@github.com:smirko-dev/fitbit-clockface.git
+cd fitbit-clockface
+npm add --dev @fitbit/sdk
+npm add --dev @fitbit/sdk-cli
+npx fitbit-build generate-appid
+npx fitbit-build
+```
