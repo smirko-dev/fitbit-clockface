@@ -14,7 +14,9 @@
       "access_activity"
     ],
     "buildTargets": [
-      "higgs"
+      "higgs",
+      "mira",
+      "meson"
     ],
     "i18n": {
       "en-US": {

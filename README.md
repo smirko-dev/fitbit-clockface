@@ -1,12 +1,12 @@
-# Fitbit Ionic Clockface
+# Fitbit Clockface
 
 ![languages](https://img.shields.io/badge/languages-JavaScript%20|%20CSS-blue)
-![platform](https://img.shields.io/badge/platform-Fitbit%20Ionic-silver)
+![platform](https://img.shields.io/badge/platforms-Ionic%20|%20Versa%20|%20Versa%202-silver)
 ![version](https://img.shields.io/badge/version-%201.2.0-green)
 
 ## Description
 
-This is a simple clock face for Fitbit Ionic.
+This is a simple clock face for Fitbit.
 It comes with
 - time (12/24hr format), date (including weekday)
 - languages: de-DE, en-EN
