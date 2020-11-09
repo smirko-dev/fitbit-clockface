@@ -16,12 +16,26 @@ It comes with
 - next calendar event of the current day
 - step count in case of no events
 
-[Fitbit gallery](https://gallery.fitbit.com/details/ae441b73-2660-407f-b796-a98d1d0583a0)
+Find the latest published version in the [Fitbit gallery](https://gallery.fitbit.com/details/ae441b73-2660-407f-b796-a98d1d0583a0).
 
 The clockface is based on https://github.com/Fitbit/sdk-calendar-clock/.
 
 Icons are from https://materialdesignicons.com/ ([Apache license version 2.0](https://www.apache.org/licenses/LICENSE-2.0.html)). 
 
+
 ## Screenshots
 
 ![Appointment](screenshot.png) ![Activity](screenshot2.png)
+
+
+
+## How to build
+
+```
+git clone git@github.com:smirko-dev/fitbit-clockface.git
+cd fitbit-clockface
+npm add --dev @fitbit/sdk
+npm add --dev @fitbit/sdk-cli
+npx fitbit-build generate-appid
+npx fitbit-build
+```
