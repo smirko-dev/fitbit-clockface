@@ -24,5 +24,4 @@ Icons are from https://materialdesignicons.com/ ([Apache license version 2.0](ht
 
 ## Screenshots
 
-![Appointment](screenshot.png)
-![Activity](screenshot2.png)
+![Appointment](screenshot.png) ![Activity](screenshot2.png)
