@@ -14,7 +14,7 @@ It comes with
 - battery icon with status in percentage
 - next calendar event of the current day
 
-[Fitbit gallery](https://gallery.fitbit.com/details/ae441b73-2660-407f-b796-a98d1d0583a0)
+Find the latest published version in the [Fitbit gallery](https://gallery.fitbit.com/details/ae441b73-2660-407f-b796-a98d1d0583a0).
 
 The clockface is based on https://github.com/Fitbit/sdk-calendar-clock/.
 
