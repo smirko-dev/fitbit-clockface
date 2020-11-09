@@ -21,14 +21,6 @@ const batteryLabel = document.getElementById("batteryLabel");
 const footstepImage = document.getElementById("footstepImage");
 const activityLabel = document.getElementById("activityLabel");
 
-// Adjust activity icon/text if not Ionic
-if (device.modelId != 27 ) {
-  footstepImage.x = 90;
-  footstepImage.y = 230;
-  activityLabel.x = 122;
-  activityLabel.y = 257;
-}
-
 clock.initialize("minutes", data => {
   // Update <text> elements with each tick
   hourLabel.text = data.hours;
