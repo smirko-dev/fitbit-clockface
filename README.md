@@ -2,7 +2,7 @@
 
 ![languages](https://img.shields.io/badge/languages-JavaScript%20|%20CSS-blue)
 ![platform](https://img.shields.io/badge/platforms-Ionic%20|%20Versa%20|%20Versa%202-silver)
-![version](https://img.shields.io/badge/version-%201.2.0-green)
+![version](https://img.shields.io/badge/version-%201.3.0-green)
 
 ## Description
 
@@ -22,5 +22,7 @@ Icons are from https://materialdesignicons.com/ ([Apache license version 2.0](ht
 
 ## Screenshots
 
-![Appointment](screenshot.png)
-![Activity](screenshot2.png)
+![Ionic Appointment](screenshot-ionic-event.png)
+![Ionic Activity](screenshot-ionic-activity.png)
+![Versa 2 Appointment](screenshot-versa2-event.png)
+![Versa 2 Activity](screenshot-versa2-activity.png)
