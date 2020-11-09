@@ -3,6 +3,7 @@
 ![languages](https://img.shields.io/badge/languages-JavaScript%20|%20CSS-blue)
 ![platform](https://img.shields.io/badge/platforms-Ionic%20|%20Versa%20|%20Versa%202-silver)
 ![version](https://img.shields.io/badge/version-%201.3.0-green)
+[![FitbitBuild Actions Status](https://github.com/smirko-dev/fitbit-clockface/workflows/FitbitBuild/badge.svg)](https://github.com/smirko-dev/fitbit-clockface/actions)
 
 ## Description
 
@@ -14,7 +15,7 @@ It comes with
 - next calendar event of the current day
 - step count in case of no events
 
-[Fitbit gallery](https://gallery.fitbit.com/details/ae441b73-2660-407f-b796-a98d1d0583a0)
+Find the latest published version in the [Fitbit gallery](https://gallery.fitbit.com/details/ae441b73-2660-407f-b796-a98d1d0583a0).
 
 The clockface is based on https://github.com/Fitbit/sdk-calendar-clock/.
 
@@ -26,3 +27,14 @@ Icons are from https://materialdesignicons.com/ ([Apache license version 2.0](ht
 ![Ionic Activity](screenshot-ionic-activity.png)
 ![Versa 2 Appointment](screenshot-versa2-event.png)
 ![Versa 2 Activity](screenshot-versa2-activity.png)
+
+## How to build
+
+```
+git clone git@github.com:smirko-dev/fitbit-clockface.git
+cd fitbit-clockface
+npm add --dev @fitbit/sdk
+npm add --dev @fitbit/sdk-cli
+npx fitbit-build generate-appid
+npx fitbit-build
+```
