@@ -2,6 +2,7 @@ import document from "document";
 import { battery } from "power";
 import { preferences } from "user-settings";
 import { display } from "display";
+import { today } from 'user-activity';
 import { me } from "appbit";
 import * as util from "../common/utils";
 import * as appointment from "./appointment";
@@ -15,6 +16,9 @@ const dateLabel = document.getElementById("dateLabel");
 const appointmentsLabel = document.getElementById("appointmentsLabel");
 const batteryImage = document.getElementById("batteryImage");
 const batteryLabel = document.getElementById("batteryLabel");
+
+const footstepImage = document.getElementById("footstepImage");
+const activityLabel = document.getElementById("activityLabel");
 
 clock.initialize("minutes", data => {
   // Update <text> elements with each tick
@@ -50,10 +54,23 @@ function renderAppointment() {
   if (event) {
     const date = fromEpochSec(event.startDate);
     appointmentsLabel.text = timeString(date) + " " + event.title;
+    hideActivity();
   }
   else {
     appointmentsLabel.text = ""
+    renderActivity();
   }
+}
+
+function hideActivity() {
+  footstepImage.image = ""
+  activityLabel.text = ""
+}
+
+function renderActivity() {
+  footstepImage.image = "shoe-print.png"
+  footstepImage.style.fill = "blue"
+  activityLabel.text = today.adjusted.steps
 }
 
 function renderBattery() {

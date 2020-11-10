@@ -11,7 +11,8 @@
     "wipeColor": "",
     "requestedPermissions": [
       "access_calendar",
-      "run_background"
+      "run_background",
+      "access_activity"
     ],
     "buildTargets": [
       "higgs"

@@ -52,3 +52,13 @@
   y: 10%;
   fill: white;
 }
+
+#activityLabel {
+  font-size: 28;
+  font-family: Colfax-Light;
+  text-length: 32;
+  text-anchor: start;
+  x: 142;
+  y: 237;
+  fill: white;
+}
