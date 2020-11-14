@@ -7,7 +7,7 @@
   font-family: Colfax-Thin;
   text-length: 32;
   text-anchor: end;
-  x: 55%;
+  x: 60%;
   y: 60%+20;
   fill: #2490DD;
 }
@@ -17,7 +17,7 @@
   font-family: Colfax-Thin;
   text-length: 32;
   text-anchor: start;
-  x: 55%;
+  x: 60%;
   y: 60%+20;
   fill: white;
 }
