@@ -6,8 +6,8 @@
   font-size: 148;
   font-family: Colfax-Thin;
   text-length: 32;
-  text-anchor: middle;
-  x: 36%;
+  text-anchor: end;
+  x: 55%;
   y: 60%+20;
   fill: #2490DD;
 }
@@ -16,8 +16,8 @@
   font-size: 96;
   font-family: Colfax-Thin;
   text-length: 32;
-  text-anchor: middle;
-  x: 72%;
+  text-anchor: start;
+  x: 55%;
   y: 60%+20;
   fill: white;
 }
@@ -40,7 +40,6 @@
   x: 0%;
   y: 75%;
   width: 90%;
-  height: 30%;
   fill: white;
 }
 

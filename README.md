@@ -25,13 +25,11 @@ Icons are from https://materialdesignicons.com/ ([Apache license version 2.0](ht
 
 ### Fitbit Ionic
 
-![Ionic Appointment](screenshots/ionic-event.png)
-![Ionic Activity](screenshots/ionic-activity.png)
+![Ionic Appointment](screenshots/ionic-event.png) ![Ionic Activity](screenshots/ionic-activity.png)
 
 ### Fitbit Versa
 
-![Versa 2 Appointment](screenshots/versa2-event.png)
-![Versa 2 Activity](screenshots/versa2-activity.png)
+![Versa 2 Appointment](screenshots/versa2-event.png) ![Versa 2 Activity](screenshots/versa2-activity.png)
 
 ## How to build
 
