@@ -18,7 +18,7 @@ const appointmentsLabel = document.getElementById("appointmentsLabel");
 const batteryImage = document.getElementById("batteryImage");
 const batteryLabel = document.getElementById("batteryLabel");
 
-const footstepImage = document.getElementById("footstepImage");
+const activityIcon = document.getElementById("activityIcon");
 const activityLabel = document.getElementById("activityLabel");
 
 clock.initialize("minutes", data => {
@@ -64,13 +64,12 @@ function renderAppointment() {
 }
 
 function hideActivity() {
-  footstepImage.image = ""
+  activityIcon.image = ""
   activityLabel.text = ""
 }
 
 function renderActivity() {
-  footstepImage.image = "shoe-print.png"
-  footstepImage.style.fill = "blue"
+  activityIcon.image = "shoe-print.png"
   activityLabel.text = today.adjusted.steps
 }
 
