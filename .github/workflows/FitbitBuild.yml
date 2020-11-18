@@ -24,10 +24,10 @@ jobs:
       uses: actions/setup-node@v1
 
     - name: Checkout Fitbit SDK
-      run: npm add --dev @fitbit/sdk
+      run: npm add --also=dev @fitbit/sdk
 
     - name: Checkout Fitbit SDK-CLI
-      run: npm add --dev @fitbit/sdk-cli
+      run: npm add --also=dev @fitbit/sdk-cli
 
     - name: Run Build
       run: npx fitbit-build --if-present

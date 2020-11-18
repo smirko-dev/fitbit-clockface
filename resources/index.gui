@@ -5,6 +5,6 @@
   <textarea id="appointmentsLabel" opacity=".75" />
   <image id="batteryImage" href="battery-alert.png" x="275" y="5" width="24" height="24" fill="white" opacity=".5" />
   <text id="batteryLabel" opacity=".75" />
-  <image id="footstepImage" href="shoe-print.png" x="110" y="210" width="32" height="32" fill="blue" opacity=".75" />
+  <image id="activityIcon" href="shoe-print.png" x="35%" y="80%" width="32" height="32" opacity=".75" class="activityIcon" />
   <text id="activityLabel" opacity=".75" />
 </svg>

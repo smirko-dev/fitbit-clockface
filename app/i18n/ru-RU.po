@@ -1,0 +1,57 @@
+
+msgid "sunday"
+msgstr "воскресенье"
+
+msgid "monday"
+msgstr "понедельник"
+
+msgid "tuesday"
+msgstr "вторник"
+
+msgid "wednesday"
+msgstr "среда"
+
+msgid "thursday"
+msgstr "четверг"
+
+msgid "friday"
+msgstr "пятница"
+
+msgid "saturday"
+msgstr "суббота"
+
+msgid "january"
+msgstr "январь"
+
+msgid "february"
+msgstr "февраль"
+
+msgid "march"
+msgstr "март"
+
+msgid "april"
+msgstr "апрель"
+
+msgid "may"
+msgstr "май"
+
+msgid "june"
+msgstr "июнь"
+
+msgid "july"
+msgstr "июль"
+
+msgid "august"
+msgstr "август"
+
+msgid "september"
+msgstr "сентябрь"
+
+msgid "october"
+msgstr "октябрь"
+
+msgid "november"
+msgstr "ноябрь"
+
+msgid "december"
+msgstr "декабрь"

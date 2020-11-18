@@ -1,14 +1,13 @@
-# Fitbit Ionic Clockface
+# Fitbit Clockface
 
 ![languages](https://img.shields.io/badge/languages-JavaScript%20|%20CSS-blue)
-![platform](https://img.shields.io/badge/platform-Fitbit%20Ionic-silver)
-![version](https://img.shields.io/badge/version-%201.2.0-green)
+![platform](https://img.shields.io/badge/platforms-Ionic%20|%20Versa%20|%20Versa%202%20|%20Versa%20Lite-silver)
+![version](https://img.shields.io/badge/version-%201.3.0-green)
 [![FitbitBuild Actions Status](https://github.com/smirko-dev/fitbit-clockface/workflows/FitbitBuild/badge.svg)](https://github.com/smirko-dev/fitbit-clockface/actions)
-
 
 ## Description
 
-This is a simple clock face for Fitbit Ionic.
+This is a simple clock face for Fitbit.
 It comes with
 - time (12/24hr format), date (including weekday)
 - languages: de-DE, en-EN
@@ -22,20 +21,23 @@ The clockface is based on https://github.com/Fitbit/sdk-calendar-clock/.
 
 Icons are from https://materialdesignicons.com/ ([Apache license version 2.0](https://www.apache.org/licenses/LICENSE-2.0.html)). 
 
-
 ## Screenshots
 
-![Appointment](screenshot.png) ![Activity](screenshot2.png)
+### Fitbit Ionic
 
+![Ionic Appointment](screenshots/ionic-event.png) ![Ionic Activity](screenshots/ionic-activity.png)
 
+### Fitbit Versa
+
+![Versa 2 Appointment](screenshots/versa2-event.png) ![Versa 2 Activity](screenshots/versa2-activity.png)
 
 ## How to build
 
 ```
 git clone git@github.com:smirko-dev/fitbit-clockface.git
 cd fitbit-clockface
-npm add --dev @fitbit/sdk
-npm add --dev @fitbit/sdk-cli
+npm add --also=dev @fitbit/sdk
+npm add --also=dev @fitbit/sdk-cli
 npx fitbit-build generate-appid
 npx fitbit-build
 ```
