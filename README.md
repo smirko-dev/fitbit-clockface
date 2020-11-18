@@ -3,7 +3,7 @@
 [![](https://img.shields.io/badge/Fitbit%20App%20Gallery-%2300B0B9?style=flat&logo=fitbit&logoColor=white)](https://gallery.fitbit.com/details/ae441b73-2660-407f-b796-a98d1d0583a0)
 ![languages](https://img.shields.io/badge/languages-JavaScript%20|%20CSS-blue)
 ![platform](https://img.shields.io/badge/platforms-Ionic%20|%20Versa%20|%20Versa%202%20|%20Versa%20Lite-silver)
-[![version](https://img.shields.io/badge/version-%201.3.0-green)](https://github.com/smirko-dev/fitbit-clockface/releases)
+[![version](https://img.shields.io/badge/version-%201.4.0-green)](https://github.com/smirko-dev/fitbit-clockface/releases)
 [![](https://img.shields.io/github/license/smirko-dev/fitbit-clockface.svg)](https://github.com/smirko-dev/fitbit-clockface/blob/master/LICENSE)
 [![FitbitBuild Actions Status](https://github.com/smirko-dev/fitbit-clockface/workflows/FitbitBuild/badge.svg)](https://github.com/smirko-dev/fitbit-clockface/actions)
 [![CodeQL Actions Status](https://github.com/smirko-dev/fitbit-clockface/workflows/CodeQL/badge.svg)](https://github.com/smirko-dev/fitbit-clockface/actions)
@@ -16,7 +16,7 @@ It comes with
 - languages: de-DE, en-EN
 - battery icon with status in percentage
 - next calendar event of the current day
-- step count in case of no events
+- user activity in case of no events
 
 Find the latest published version in the [Fitbit gallery](https://gallery.fitbit.com/details/ae441b73-2660-407f-b796-a98d1d0583a0).
 

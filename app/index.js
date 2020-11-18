@@ -8,6 +8,7 @@ import { me as device } from "device";
 import * as util from "../common/utils";
 import * as appointment from "./appointment";
 import * as clock from "./clock";
+import * as messaging from "messaging";
 import { fromEpochSec, timeString } from "../common/utils";
 
 // Get a handle on the <text> elements
@@ -20,6 +21,32 @@ const batteryLabel = document.getElementById("batteryLabel");
 
 const activityIcon = document.getElementById("activityIcon");
 const activityLabel = document.getElementById("activityLabel");
+
+const ActivitySelection = {
+  DIST: 'distance',
+  STAIRS: 'stairs',
+  CAL: 'calories',
+  STEPS: 'steps'
+}
+
+let activitySelection = ActivitySelection.STEPS;
+
+// Update app settings
+messaging.peerSocket.onmessage = (evt) => {
+  if (evt.data === "distance") {
+    activitySelection = ActivitySelection.DIST;
+  }
+  else if (evt.data === "stairs") {
+    activitySelection = ActivitySelection.STAIRS;
+  }
+  else if (evt.data === "calories") {
+    activitySelection = ActivitySelection.CAL;
+  }
+  else {
+    activitySelection = ActivitySelection.STEPS;
+  }
+  renderAppointment();
+}
 
 clock.initialize("minutes", data => {
   // Update <text> elements with each tick
@@ -42,7 +69,7 @@ appointment.initialize(() => {
 });
 
 display.addEventListener("change", () => {
-  // Update appointment on display on
+  // Update appointment and battery on display on
   if (display.on) {
     renderAppointment();
     renderBattery();
@@ -58,19 +85,35 @@ function renderAppointment() {
     hideActivity();
   }
   else {
-    appointmentsLabel.text = ""
+    appointmentsLabel.text = "";
     renderActivity();
   }
 }
 
 function hideActivity() {
-  activityIcon.image = ""
-  activityLabel.text = ""
+  activityIcon.image = "";
+  activityLabel.text = "";
 }
 
 function renderActivity() {
-  activityIcon.image = "shoe-print.png"
-  activityLabel.text = today.adjusted.steps
+  switch (activitySelection) {
+    case ActivitySelection.DIST:
+      activityIcon.image = "distance.png";
+      activityLabel.text = today.adjusted.distance;
+      break;
+    case ActivitySelection.STAIRS:
+      activityIcon.image = "stairs.png";
+      activityLabel.text = today.adjusted.elevationGain;
+      break;
+    case ActivitySelection.CAL:
+      activityIcon.image = "calories.png";
+      activityLabel.text = today.adjusted.calories;
+      break;
+    default:
+      activityIcon.image = "shoe-print.png";
+      activityLabel.text = today.adjusted.steps;
+      break;
+  }
 }
 
 function renderBattery() {
