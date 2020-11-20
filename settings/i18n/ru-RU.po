@@ -1,0 +1,15 @@
+
+msgid "title"
+msgstr "Activitiy info"
+
+msgid "steps"
+msgstr "Steps"
+
+msgid "cal"
+msgstr "Calories"
+
+msgid "dist"
+msgstr "Distance"
+
+msgid "floors"
+msgstr "Floors"
