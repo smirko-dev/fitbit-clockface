@@ -1,6 +1,6 @@
 
 msgid "title"
-msgstr "Activitiy info"
+msgstr "Activity info"
 
 msgid "steps"
 msgstr "Steps"

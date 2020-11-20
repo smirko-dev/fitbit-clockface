@@ -11,7 +11,7 @@ import * as clock from "./clock";
 import * as messaging from "messaging";
 import { fromEpochSec, timeString } from "../common/utils";
 
-// Get a handle on the <text> elements
+// Get a handle on the <text> and <image> elements
 const hourLabel = document.getElementById("hourLabel");
 const minuteLabel = document.getElementById("minuteLabel");
 const dateLabel = document.getElementById("dateLabel");

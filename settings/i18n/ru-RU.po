@@ -1,15 +1,15 @@
 
 msgid "title"
-msgstr "Activitiy info"
+msgstr "Инфо о деятельности"
 
 msgid "steps"
-msgstr "Steps"
+msgstr "Шаги"
 
 msgid "cal"
-msgstr "Calories"
+msgstr "Калорий"
 
 msgid "dist"
-msgstr "Distance"
+msgstr "Расстояние"
 
 msgid "floors"
-msgstr "Floors"
+msgstr "Полы"
