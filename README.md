@@ -1,8 +1,10 @@
 # Fitbit Clockface
 
+[![](https://img.shields.io/badge/Fitbit%20App%20Gallery-%2300B0B9?style=flat-square&logo=fitbit&logoColor=white)](https://gallery.fitbit.com/details/ae441b73-2660-407f-b796-a98d1d0583a0)
 ![languages](https://img.shields.io/badge/languages-JavaScript%20|%20CSS-blue)
 ![platform](https://img.shields.io/badge/platforms-Ionic%20|%20Versa%20|%20Versa%202%20|%20Versa%20Lite-silver)
 ![version](https://img.shields.io/badge/version-%201.3.0-green)
+[![](https://img.shields.io/github/license/smirko-dev/fitbit-clockface.svg)](https://github.com/smirko-dev/fitbit-clockface/blob/master/LICENSE)
 [![FitbitBuild Actions Status](https://github.com/smirko-dev/fitbit-clockface/workflows/FitbitBuild/badge.svg)](https://github.com/smirko-dev/fitbit-clockface/actions)
 
 ## Description
