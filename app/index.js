@@ -24,7 +24,7 @@ const activityLabel = document.getElementById("activityLabel");
 
 const ActivitySelection = {
   DIST: 'distance',
-  STAIRS: 'stairs',
+  FLOORS: 'floors',
   CAL: 'calories',
   STEPS: 'steps'
 }
@@ -36,8 +36,7 @@ messaging.peerSocket.onmessage = (evt) => {
   if (evt.data === "distance") {
     activitySelection = ActivitySelection.DIST;
   }
-  else if (evt.data === "stairs") {
-    activitySelection = ActivitySelection.STAIRS;
+    activitySelection = ActivitySelection.FLOORS;
   }
   else if (evt.data === "calories") {
     activitySelection = ActivitySelection.CAL;
@@ -101,8 +100,9 @@ function renderActivity() {
       activityIcon.image = "distance.png";
       activityLabel.text = today.adjusted.distance;
       break;
-    case ActivitySelection.STAIRS:
-      activityIcon.image = "stairs.png";
+    case ActivitySelection.FLOORS:
+
+      activityIcon.image = "floors.png";
       activityLabel.text = today.adjusted.elevationGain;
       break;
     case ActivitySelection.CAL:
@@ -110,7 +110,7 @@ function renderActivity() {
       activityLabel.text = today.adjusted.calories;
       break;
     default:
-      activityIcon.image = "shoe-print.png";
+      activityIcon.image = "steps.png";
       activityLabel.text = today.adjusted.steps;
       break;
   }
