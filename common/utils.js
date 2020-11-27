@@ -20,6 +20,18 @@ export function dayString(day) {
   else if (day == 3) {
     return "3rd"
   }
+  if (day == 21) {
+    return "21st"
+  }
+  else if (day == 22) {
+    return "22nd"
+  }
+  else if (day == 23) {
+    return "23rd"
+  }
+  if (day == 31) {
+    return "31st"
+  }
   return day.toString() + "th";
 }
 
