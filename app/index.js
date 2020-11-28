@@ -36,6 +36,7 @@ messaging.peerSocket.onmessage = (evt) => {
   if (evt.data === "distance") {
     activitySelection = ActivitySelection.DIST;
   }
+  else if (evt.data === "floors") {
     activitySelection = ActivitySelection.FLOORS;
   }
   else if (evt.data === "calories") {

@@ -1,5 +1,4 @@
 
-function settingsFunc(props){
 import { gettext } from "i18n";
 
 function settingsFunc(props) {
@@ -12,7 +11,6 @@ function settingsFunc(props) {
     <Page>
         <Section>
             <Select 
-                label={`User activity`}
                 label={`${title}`}
                 settingsKey="activity"
                 options={[
