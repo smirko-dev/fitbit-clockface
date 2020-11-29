@@ -37,4 +37,5 @@ jobs:
       uses: actions/upload-artifact@v2
       if: ${{ success() }}
       with:
-        path: ${{ github.workspace }}/*.fba
+        path: **/*.fba
+        if-no-files-found: error
