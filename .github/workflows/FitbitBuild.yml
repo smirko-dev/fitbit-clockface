@@ -37,4 +37,4 @@ jobs:
       uses: actions/upload-artifact@v2
       if: ${{ success() }}
       with:
-        path: *.fba
+        path: ${{ github.workspace }}/*.fba
