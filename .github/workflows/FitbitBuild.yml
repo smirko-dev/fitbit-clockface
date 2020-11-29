@@ -33,7 +33,8 @@ jobs:
     - name: Run Build
       run: npx fitbit-build --if-present
 
-    - uses: actions/upload-artifact@v2
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
       if: ${{ success() }}
       with:
-        path: build/MyClock.fba
+        path: MyClock.fba
