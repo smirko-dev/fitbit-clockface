@@ -40,8 +40,8 @@ jobs:
         path: build/app.fba
         if-no-files-found: error
 
-    - uses: actions/checkout@v1
-    - name: Add commit comment
+    - name: Post comment
+      uses: actions/checkout@v1
       run: |
         jq -nc '{"body": "test comment"}' | \
         curl -sL  -X POST -d @- \
