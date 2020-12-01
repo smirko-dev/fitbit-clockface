@@ -1,0 +1,15 @@
+
+msgid "title"
+msgstr "Aktivitäts-Info"
+
+msgid "steps"
+msgstr "Schritte"
+
+msgid "cal"
+msgstr "Kalorien"
+
+msgid "dist"
+msgstr "Distanz"
+
+msgid "floors"
+msgstr "Etagen"

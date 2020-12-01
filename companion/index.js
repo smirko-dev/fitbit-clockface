@@ -6,6 +6,19 @@ import { outbox } from "file-transfer";
 import { toEpochSec } from "../common/utils";
 import { dataFile, millisecondsPerMinute } from "../common/constants";
 
+import { settingsStorage } from "settings";
+import * as messaging from "messaging";
+
+// Update user settings 
+settingsStorage.onchange = function(evt) {
+  if (messaging.peerSocket.readyState === messaging.peerSocket.OPEN) {
+    if (evt.key === "activity") {
+      let data = JSON.parse(evt.newValue);
+      messaging.peerSocket.send(data["values"][0].value);
+    }
+  }
+}
+
 companion.wakeInterval = 15 * millisecondsPerMinute;
 companion.addEventListener("wakeinterval", refreshEvents);
 

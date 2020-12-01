@@ -1,10 +1,10 @@
 <svg class="background">
   <text id="hourLabel" />
   <text id="minuteLabel" />
-  <text id="dateLabel" opacity=".75" />
-  <textarea id="appointmentsLabel" opacity=".75" />
-  <image id="batteryImage" href="battery-alert.png" x="275" y="5" width="24" height="24" fill="white" opacity=".5" />
-  <text id="batteryLabel" opacity=".75" />
-  <image id="activityIcon" href="shoe-print.png" x="35%" y="80%" width="32" height="32" opacity=".75" class="activityIcon" />
-  <text id="activityLabel" opacity=".75" />
+  <text id="dateLabel" opacity=".8" />
+  <textarea id="appointmentsLabel" opacity=".8" />
+  <image id="batteryImage" href="battery-alert.png" x="275" y="5" width="24" height="24" opacity=".6" class="batteryIcon" />
+  <text id="batteryLabel" opacity=".8" />
+  <image id="activityIcon" href="steps.png" x="35%" y="80%" width="32" height="32" opacity=".8" class="activityIcon" />
+  <text id="activityLabel" opacity=".8" />
 </svg>
