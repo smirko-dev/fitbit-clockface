@@ -45,8 +45,11 @@ jobs:
 
     - name: Post comment
       run: |
-        jq -nc '{"body": "test comment"}' | \
-        curl -sL  -X POST -d @- \
-          -H "Content-Type: application/json" \
-          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-          "https://api.github.com/repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA/comments"
+        echo -e "Build successful" >> report.md
+        cml-send-comment report.md
+#      run: |
+#        jq -nc '{"body": "test comment"}' | \
+#        curl -sL  -X POST -d @- \
+#          -H "Content-Type: application/json" \
+#          -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+#          "https://api.github.com/repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA/comments"
