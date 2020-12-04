@@ -45,8 +45,8 @@ jobs:
 
     - name: Post comment
       shell: bash
-        env:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
+      env:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
       run: |
         echo -e "Build successful" >> report.md
         cml-send-comment report.md
