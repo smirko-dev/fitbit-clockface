@@ -1,5 +1,5 @@
 
-name: Post
+name: PostBuildInfo
 
 on:
   workflow_run:
