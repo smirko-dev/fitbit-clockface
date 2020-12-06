@@ -1,5 +1,5 @@
 
-name: PostBuildInfo
+name: Post
 
 on:
   workflow_run:
@@ -8,6 +8,7 @@ on:
     types: 
       - completed
 
+jobs:
   post:
     name: Post info
     runs-on: ubuntu-latest
