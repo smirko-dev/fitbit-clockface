@@ -46,6 +46,7 @@ jobs:
   post:
     name: Post info
     runs-on: ubuntu-latest
+    needs: build
     steps:
     - name: Get workflow info
       shell: bash
