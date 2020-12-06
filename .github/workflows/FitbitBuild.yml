@@ -30,7 +30,7 @@ jobs:
     - name: Checkout Fitbit SDK-CLI
       run: npm add --also=dev @fitbit/sdk-cli
 
-    - name: Install CLM
+    - name: Install CML
       run: npm i -g @dvcorg/cml
 
     - name: Run Build
@@ -42,6 +42,11 @@ jobs:
       with:
         path: build/app.fba
         if-no-files-found: error
+
+    - name: Get workflow info
+      shell: bash
+      run: |
+        curl -sL GET "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts"
 
     - name: Post comment
       shell: bash
