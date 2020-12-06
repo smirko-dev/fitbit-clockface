@@ -43,18 +43,22 @@ jobs:
         path: build/app.fba
         if-no-files-found: error
 
+  post:
+    name: Post info
+    runs-on: ubuntu-latest
     - name: Get workflow info
       shell: bash
       run: |
         curl -sL -X GET "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts"
 
-    - name: Post comment
-      shell: bash
-      env:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        echo -e "Build successful" >> report.md
-        cml-send-comment report.md
+#    - name: Post comment
+#      shell: bash
+#      env:
+#        repo_token: ${{ secrets.GITHUB_TOKEN }}
+#      run: |
+#        echo -e "Build successful" >> report.md
+#        cml-send-comment report.md
+
 #      run: |
 #        jq -nc '{"body": "test comment"}' | \
 #        curl -sL  -X POST -d @- \
