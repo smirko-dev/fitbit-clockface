@@ -46,7 +46,7 @@ jobs:
     - name: Get workflow info
       shell: bash
       run: |
-        curl -sL GET "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts"
+        curl -sL -X GET "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts"
 
     - name: Post comment
       shell: bash
