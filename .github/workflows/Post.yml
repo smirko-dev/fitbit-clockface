@@ -3,8 +3,8 @@ name: Post
 
 on:
   workflow_run:
-    workflows: ["FitbitBuild"]
-    branches: [main]
+    workflows: [ "FitbitBuild" ]
+    branches: [ main ]
     types: 
       - completed
 
