@@ -30,9 +30,6 @@ jobs:
     - name: Checkout Fitbit SDK-CLI
       run: npm add --also=dev @fitbit/sdk-cli
 
-    - name: Install CML
-      run: npm i -g @dvcorg/cml
-
     - name: Run Build
       run: npx fitbit-build --if-present
 
