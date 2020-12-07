@@ -32,3 +32,10 @@ jobs:
 
     - name: Run Build
       run: npx fitbit-build --if-present
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      if: ${{ success() }}
+      with:
+        path: build/app.fba
+        if-no-files-found: error
