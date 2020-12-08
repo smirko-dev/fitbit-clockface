@@ -4,6 +4,8 @@ name: Post
 on:
   workflow_run:
     workflows: [ "FitbitBuild" ]
+    types: 
+      - completed
 
 jobs:
   post:
