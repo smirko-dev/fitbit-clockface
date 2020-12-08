@@ -4,9 +4,6 @@ name: Post
 on:
   workflow_run:
     workflows: [ "FitbitBuild" ]
-    branches: [ main ]
-    types: 
-      - completed
 
 jobs:
   post:
