@@ -30,6 +30,18 @@ const ActivitySelection = {
 }
 
 let activitySelection = ActivitySelection.STEPS;
+let activityIntervalID = 0;
+
+const INVISIBLE = 0.0;
+const VISIBLE = 0.8;
+
+// Show battery label just for Ionic
+if (device.modelId != 27 ) {
+  batteryLabel.style.opacity = INVISIBLE;
+}
+else {
+  batteryLabel.style.opacity = VISIBLE;
+}
 
 // Update app settings
 messaging.peerSocket.onmessage = (evt) => {
@@ -85,17 +97,26 @@ function renderAppointment() {
     hideActivity();
   }
   else {
-    appointmentsLabel.text = "";
-    renderActivity();
+    showActivity();
+    updateActivity();
   }
 }
 
 function hideActivity() {
-  activityIcon.image = "";
-  activityLabel.text = "";
+  activityIcon.style.opacity = INVISIBLE;
+  activityLabel.style.opacity = INVISIBLE;
+  appointmentsLabel.style.opacity = VISIBLE;
+  clearInterval(activityIntervalID);
 }
 
-function renderActivity() {
+function showActivity() {
+  activityIcon.style.opacity = VISIBLE;
+  activityLabel.style.opacity = VISIBLE;
+  appointmentsLabel.style.opacity = INVISIBLE;
+  activityIntervalID = setInterval(updateActivity, 1500);
+}
+
+function updateActivity() {
   switch (activitySelection) {
     case ActivitySelection.DIST:
       activityIcon.image = "distance.png";
@@ -119,13 +140,7 @@ function renderActivity() {
 
 function renderBattery() {
   // Update the battery <text> element every time when battery changed
-  // Show <text> just on Ionic
-  if (device.modelId != 27 ) {
-    batteryLabel.text = "";
-  }
-  else {
-    batteryLabel.text = Math.floor(battery.chargeLevel) + "%";
-  }
+  batteryLabel.text = Math.floor(battery.chargeLevel) + "%";
   
   // Update battery icon
   const level = Math.floor(battery.chargeLevel / 10) * 10;
