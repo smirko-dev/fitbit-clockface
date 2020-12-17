@@ -1,11 +1,8 @@
 import document from "document";
 import { battery } from "power";
-import { preferences } from "user-settings";
 import { display } from "display";
 import { today } from 'user-activity';
-import { me } from "appbit";
 import { me as device } from "device";
-import * as util from "../common/utils";
 import * as appointment from "./appointment";
 import * as clock from "./clock";
 import * as messaging from "messaging";
@@ -67,8 +64,6 @@ clock.initialize("minutes", data => {
   dateLabel.text = data.date;
   // Update appointment
   renderAppointment();
-  // Update battery
-  renderBattery();
 });
 
 battery.onchange = (evt) => {
@@ -86,7 +81,17 @@ display.addEventListener("change", () => {
     renderAppointment();
     renderBattery();
   }
+  // Stop updating activity info
+  else {
+    hideActivity();
+  }
 });
+
+// Hide event when touched
+appointmentsLabel.addEventListener("mousedown", () => {
+  showActivity();
+  updateActivity();
+})
 
 function renderAppointment() {
   // Upate the appointment <text> element
@@ -150,3 +155,5 @@ function renderBattery() {
     batteryImage.image = `battery-${Math.floor(battery.chargeLevel / 10) * 10}.png`;
   }
 }
+
+renderBattery();
