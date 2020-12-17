@@ -8,6 +8,12 @@ import * as clock from "./clock";
 import * as messaging from "messaging";
 import { fromEpochSec, timeString } from "../common/utils";
 
+import { HeartRateSensor } from "heart-rate";
+import { BodyPresenceSensor } from "body-presence";
+
+const body = new BodyPresenceSensor();
+const hrm = new HeartRateSensor();
+
 // Get a handle on the <text> and <image> elements
 const hourLabel = document.getElementById("hourLabel");
 const minuteLabel = document.getElementById("minuteLabel");
@@ -18,6 +24,9 @@ const batteryLabel = document.getElementById("batteryLabel");
 
 const activityIcon = document.getElementById("activityIcon");
 const activityLabel = document.getElementById("activityLabel");
+
+const heartrateIcon = document.getElementById("heartrateIcon");
+const heartrateLabel = document.getElementById("heartrateLabel");
 
 const ActivitySelection = {
   DIST: 'distance',
@@ -39,6 +48,26 @@ if (device.modelId != 27 ) {
 else {
   batteryLabel.style.opacity = VISIBLE;
 }
+
+// Update heart rate availability
+function updateHeartrate() {
+  if (display.on && body.present) {
+    hrm.start();
+  }
+  else {
+    hrm.stop();
+  }
+}
+
+// Update body presence
+body.addEventListener("reading", () => {
+  updateHeartrate();
+});
+
+// Update heart rate text
+hrm.addEventListener("reading", () => {
+  heartrateLabel.text = hrm.heartRate;
+});
 
 // Update app settings
 messaging.peerSocket.onmessage = (evt) => {
@@ -78,16 +107,23 @@ appointment.initialize(() => {
 });
 
 display.addEventListener("change", () => {
+  updateDisplay();
+});
+
+function updateDisplay() {
   // Update appointment and battery on display on
   if (display.on) {
+    body.start();
     renderAppointment();
     renderBattery();
   }
   // Stop updating activity info
   else {
+    body.stop();
     hideActivity();
   }
-});
+  updateHeartrate();
+}
 
 // Hide event when touched
 appointmentsLabel.addEventListener("mousedown", () => {
@@ -112,6 +148,8 @@ function renderAppointment() {
 function hideActivity() {
   activityIcon.style.opacity = INVISIBLE;
   activityLabel.style.opacity = INVISIBLE;
+  heartrateIcon.style.opacity = INVISIBLE;
+  heartrateLabel.style.opacity = INVISIBLE;
   appointmentsLabel.style.opacity = VISIBLE;
   clearInterval(activityIntervalID);
 }
@@ -119,6 +157,8 @@ function hideActivity() {
 function showActivity() {
   activityIcon.style.opacity = VISIBLE;
   activityLabel.style.opacity = VISIBLE;
+  heartrateIcon.style.opacity = VISIBLE;
+  heartrateLabel.style.opacity = VISIBLE;
   appointmentsLabel.style.opacity = INVISIBLE;
   activityIntervalID = setInterval(updateActivity, 1500);
 }
@@ -157,3 +197,5 @@ function renderBattery() {
     batteryImage.image = `battery-${Math.floor(battery.chargeLevel / 10) * 10}.png`;
   }
 }
+
+updateDisplay();
