@@ -5,14 +5,10 @@ import { today } from 'user-activity';
 import { me as device } from "device";
 import * as appointment from "./appointment";
 import * as clock from "./clock";
+import * as heartrate from "./heartrate";
 import * as messaging from "messaging";
 import { fromEpochSec, timeString } from "../common/utils";
-
-import { HeartRateSensor } from "heart-rate";
-import { BodyPresenceSensor } from "body-presence";
-
-const body = new BodyPresenceSensor();
-const hrm = new HeartRateSensor();
+import { INVISIBLE, VISIBLE } from "../common/constants";
 
 // Get a handle on the <text> and <image> elements
 const hourLabel = document.getElementById("hourLabel");
@@ -38,9 +34,6 @@ const ActivitySelection = {
 let activitySelection = ActivitySelection.STEPS;
 let activityIntervalID = 0;
 
-const INVISIBLE = 0.0;
-const VISIBLE = 0.8;
-
 // Show battery label just for Ionic
 if (device.modelId != 27 ) {
   batteryLabel.style.opacity = INVISIBLE;
@@ -48,26 +41,6 @@ if (device.modelId != 27 ) {
 else {
   batteryLabel.style.opacity = VISIBLE;
 }
-
-// Update heart rate availability
-function updateHeartrate() {
-  if (display.on && body.present) {
-    hrm.start();
-  }
-  else {
-    hrm.stop();
-  }
-}
-
-// Update body presence
-body.addEventListener("reading", () => {
-  updateHeartrate();
-});
-
-// Update heart rate text
-hrm.addEventListener("reading", () => {
-  heartrateLabel.text = hrm.heartRate;
-});
 
 // Update app settings
 messaging.peerSocket.onmessage = (evt) => {
@@ -110,19 +83,20 @@ display.addEventListener("change", () => {
   updateDisplay();
 });
 
+heartrate.initialize(hr => {
+  heartrateLabel.text = hr.text;
+});
+
 function updateDisplay() {
   // Update appointment and battery on display on
   if (display.on) {
-    body.start();
     renderAppointment();
     renderBattery();
   }
   // Stop updating activity info
   else {
-    body.stop();
     hideActivity();
   }
-  updateHeartrate();
 }
 
 // Hide event when touched
@@ -148,8 +122,7 @@ function renderAppointment() {
 function hideActivity() {
   activityIcon.style.opacity = INVISIBLE;
   activityLabel.style.opacity = INVISIBLE;
-  heartrateIcon.style.opacity = INVISIBLE;
-  heartrateLabel.style.opacity = INVISIBLE;
+  hideHeartrate();
   appointmentsLabel.style.opacity = VISIBLE;
   clearInterval(activityIntervalID);
 }
@@ -157,10 +130,19 @@ function hideActivity() {
 function showActivity() {
   activityIcon.style.opacity = VISIBLE;
   activityLabel.style.opacity = VISIBLE;
-  heartrateIcon.style.opacity = VISIBLE;
-  heartrateLabel.style.opacity = VISIBLE;
+  showHeartrate();
   appointmentsLabel.style.opacity = INVISIBLE;
   activityIntervalID = setInterval(updateActivity, 1500);
+}
+
+function hideHeartrate() {
+  heartrateIcon.style.opacity = INVISIBLE;
+  heartrateLabel.style.opacity = INVISIBLE;
+}
+
+function showHeartrate() {
+  heartrateIcon.style.opacity = VISIBLE;
+  heartrateLabel.style.opacity = VISIBLE;
 }
 
 function updateActivity() {
