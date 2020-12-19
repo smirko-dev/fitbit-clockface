@@ -1,13 +1,11 @@
 import document from "document";
 import { battery } from "power";
-import { preferences } from "user-settings";
 import { display } from "display";
 import { today } from 'user-activity';
-import { me } from "appbit";
 import { me as device } from "device";
-import * as util from "../common/utils";
 import * as appointment from "./appointment";
 import * as clock from "./clock";
+import * as heartrate from "./heartrate";
 import * as messaging from "messaging";
 import { fromEpochSec, timeString } from "../common/utils";
 
@@ -22,6 +20,12 @@ const batteryLabel = document.getElementById("batteryLabel");
 const activityIcon = document.getElementById("activityIcon");
 const activityLabel = document.getElementById("activityLabel");
 
+const heartrateIcon = document.getElementById("heartrateIcon");
+const heartrateLabel = document.getElementById("heartrateLabel");
+
+const INVISIBLE = 0.0;
+const VISIBLE = 0.8;
+
 const ActivitySelection = {
   DIST: 'distance',
   FLOORS: 'floors',
@@ -31,9 +35,6 @@ const ActivitySelection = {
 
 let activitySelection = ActivitySelection.STEPS;
 let activityIntervalID = 0;
-
-const INVISIBLE = 0.0;
-const VISIBLE = 0.8;
 
 // Show battery label just for Ionic
 if (device.modelId != 27 ) {
@@ -81,12 +82,32 @@ appointment.initialize(() => {
 });
 
 display.addEventListener("change", () => {
+  updateDisplay();
+});
+
+heartrate.initialize(hr => {
+  heartrateLabel.text = hr.text;
+});
+
+function updateDisplay() {
   // Update appointment and battery on display on
   if (display.on) {
     renderAppointment();
     renderBattery();
   }
-});
+  // Stop updating activity info
+  else {
+    hideActivity();
+  }
+}
+
+// Hide event when touched
+appointmentsLabel.addEventListener("mousedown", () => {
+  showActivity();
+  showHeartrate();
+  hideAppointment();
+  updateActivity();
+})
 
 function renderAppointment() {
   // Upate the appointment <text> element
@@ -94,26 +115,46 @@ function renderAppointment() {
   if (event) {
     const date = fromEpochSec(event.startDate);
     appointmentsLabel.text = timeString(date) + " " + event.title;
+    showAppointment();
     hideActivity();
+    hideHeartrate();
   }
   else {
+    hideAppointment();
     showActivity();
+    showHeartrate();
     updateActivity();
   }
+}
+
+function hideAppointment() {
+  appointmentsLabel.style.opacity = INVISIBLE;
+}
+
+function showAppointment() {
+  appointmentsLabel.style.opacity = VISIBLE;
 }
 
 function hideActivity() {
   activityIcon.style.opacity = INVISIBLE;
   activityLabel.style.opacity = INVISIBLE;
-  appointmentsLabel.style.opacity = VISIBLE;
   clearInterval(activityIntervalID);
 }
 
 function showActivity() {
   activityIcon.style.opacity = VISIBLE;
   activityLabel.style.opacity = VISIBLE;
-  appointmentsLabel.style.opacity = INVISIBLE;
   activityIntervalID = setInterval(updateActivity, 1500);
+}
+
+function hideHeartrate() {
+  heartrateIcon.style.opacity = INVISIBLE;
+  heartrateLabel.style.opacity = INVISIBLE;
+}
+
+function showHeartrate() {
+  heartrateIcon.style.opacity = VISIBLE;
+  heartrateLabel.style.opacity = VISIBLE;
 }
 
 function updateActivity() {
@@ -150,3 +191,5 @@ function renderBattery() {
     batteryImage.image = `battery-${Math.floor(battery.chargeLevel / 10) * 10}.png`;
   }
 }
+
+updateDisplay();
