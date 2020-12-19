@@ -3,8 +3,8 @@ import { display } from "display";
 import { HeartRateSensor } from "heart-rate";
 import { BodyPresenceSensor } from "body-presence";
 
-const body = new BodyPresenceSensor();
-const hrm = new HeartRateSensor();
+const bodyPresenceSensor = new BodyPresenceSensor({ frequency: 1, batch: 1 });
+const heartRateSensor = new HeartRateSensor();
 
 let handleHeartrateCallback;
 
@@ -12,45 +12,44 @@ export function initialize(callback) {
   handleHeartrateCallback = callback;
 
   display.addEventListener("change", () => {
-    console.log(`Display changed to ${display.on}`);
     if (display.on) {
-      body.start();
+      console.log("Display on -> Start BodyPresenceSensor");
+      bodyPresenceSensor.start();
     }
     else {
-      body.stop();
+      console.log("Display off -> Stop BodyPresenceSensor");
+      bodyPresenceSensor.stop();
+      console.log("Display off -> Stop HeartRateSensor");
+      heartRateSensor.stop();
     }
-    refresh();
   });
 
-  body.addEventListener("reading", () => {
-    console.log(`Body presence changed to ${body.present}`);
-    refresh();
+  bodyPresenceSensor.addEventListener("reading", () => {
+    if (bodyPresenceSensor.activated) {
+      if (bodyPresenceSensor.present) {
+        console.log("Body present -> Start HeartRateSensor");
+        heartRateSensor.start();
+      }
+      else {
+        console.log("Body not present -> Stop HeartRateSensor");
+        heartRateSensor.stop();
+        update("--");
+      }
+    }
   });
 
-  hrm.addEventListener("reading", () => {
-    if (!body.present || !hrm.activated) {
+  heartRateSensor.addEventListener("reading", () => {
+    if (!bodyPresenceSensor.present || !heartRateSensor.activated) {
       update("--");
     }
     else {
-      update(`${hrm.heartRate}`);
+      update(`${heartRateSensor.heartRate}`);
     }
   });
 
   if (display.on) {
-    body.start();
-    refresh();
-  }
-}
-
-export function refresh() {
-  if (!body.present || !hrm.activated) {
-    update("--");
-  }
-  if (display.on && body.present) {
-    hrm.start();
-  }
-  else {
-    hrm.stop();
+    console.log("Init -> Start BodyPresenceSensor");
+    bodyPresenceSensor.start();
   }
 }
 

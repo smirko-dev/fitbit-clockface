@@ -8,7 +8,6 @@ import * as clock from "./clock";
 import * as heartrate from "./heartrate";
 import * as messaging from "messaging";
 import { fromEpochSec, timeString } from "../common/utils";
-import { INVISIBLE, VISIBLE } from "../common/constants";
 
 // Get a handle on the <text> and <image> elements
 const hourLabel = document.getElementById("hourLabel");
@@ -23,6 +22,9 @@ const activityLabel = document.getElementById("activityLabel");
 
 const heartrateIcon = document.getElementById("heartrateIcon");
 const heartrateLabel = document.getElementById("heartrateLabel");
+
+const INVISIBLE = 0.0;
+const VISIBLE = 0.8;
 
 const ActivitySelection = {
   DIST: 'distance',
@@ -102,6 +104,8 @@ function updateDisplay() {
 // Hide event when touched
 appointmentsLabel.addEventListener("mousedown", () => {
   showActivity();
+  showHeartrate();
+  hideAppointment();
   updateActivity();
 })
 
@@ -111,27 +115,35 @@ function renderAppointment() {
   if (event) {
     const date = fromEpochSec(event.startDate);
     appointmentsLabel.text = timeString(date) + " " + event.title;
+    showAppointment();
     hideActivity();
+    hideHeartrate();
   }
   else {
+    hideAppointment();
     showActivity();
+    showHeartrate();
     updateActivity();
   }
+}
+
+function hideAppointment() {
+  appointmentsLabel.style.opacity = INVISIBLE;
+}
+
+function showAppointment() {
+  appointmentsLabel.style.opacity = VISIBLE;
 }
 
 function hideActivity() {
   activityIcon.style.opacity = INVISIBLE;
   activityLabel.style.opacity = INVISIBLE;
-  hideHeartrate();
-  appointmentsLabel.style.opacity = VISIBLE;
   clearInterval(activityIntervalID);
 }
 
 function showActivity() {
   activityIcon.style.opacity = VISIBLE;
   activityLabel.style.opacity = VISIBLE;
-  showHeartrate();
-  appointmentsLabel.style.opacity = INVISIBLE;
   activityIntervalID = setInterval(updateActivity, 1500);
 }
 
