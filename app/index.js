@@ -76,13 +76,13 @@ appointment.initialize(() => {
 });
 
 display.addEventListener("change", () => {
-  // Update appointment and battery on display on
   if (display.on) {
+    // Update appointment and battery on display on
     renderAppointment();
     renderBattery();
   }
-  // Stop updating activity info
   else {
+    // Stop updating activity info
     hideActivity();
   }
 });
@@ -128,7 +128,6 @@ function updateActivity() {
       activityLabel.text = today.adjusted.distance;
       break;
     case ActivitySelection.FLOORS:
-
       activityIcon.image = "floors.png";
       activityLabel.text = today.adjusted.elevationGain;
       break;
@@ -151,7 +150,8 @@ function renderBattery() {
   const level = Math.floor(battery.chargeLevel / 10) * 10;
   if (level < 20) {
     batteryImage.image = `battery-alert.png`;
-  } else {
+  }
+  else {
     batteryImage.image = `battery-${Math.floor(battery.chargeLevel / 10) * 10}.png`;
   }
 }
