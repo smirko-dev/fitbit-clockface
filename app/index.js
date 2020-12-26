@@ -111,14 +111,14 @@ function hideActivity() {
   activityIcon.style.opacity = INVISIBLE;
   activityLabel.style.opacity = INVISIBLE;
   appointmentsLabel.style.opacity = VISIBLE;
-  clearInterval(activityIntervalID);
+  //clearInterval(activityIntervalID);
 }
 
 function showActivity() {
   activityIcon.style.opacity = VISIBLE;
   activityLabel.style.opacity = VISIBLE;
   appointmentsLabel.style.opacity = INVISIBLE;
-  activityIntervalID = setInterval(updateActivity, 1500);
+  //activityIntervalID = setInterval(updateActivity, 1500);
 }
 
 function updateActivity() {
