@@ -2,7 +2,7 @@
   <text id="hourLabel" />
   <text id="minuteLabel" />
   <text id="dateLabel" opacity=".8" />
-  <textarea id="appointmentsLabel" opacity=".8" />
+  <textarea id="appointmentsLabel" opacity=".8" pointer-events="visible" />
   <image id="batteryImage" href="battery-alert.png" x="275" y="5" width="24" height="24" opacity=".6" class="batteryIcon" />
   <text id="batteryLabel" opacity=".8" />
   <image id="activityIcon" href="steps.png" x="35%" y="80%" width="32" height="32" opacity=".8" class="activityIcon" />

@@ -1,11 +1,8 @@
 import document from "document";
 import { battery } from "power";
-import { preferences } from "user-settings";
 import { display } from "display";
 import { today } from 'user-activity';
-import { me } from "appbit";
 import { me as device } from "device";
-import * as util from "../common/utils";
 import * as appointment from "./appointment";
 import * as clock from "./clock";
 import * as messaging from "messaging";
@@ -30,7 +27,7 @@ const ActivitySelection = {
 }
 
 let activitySelection = ActivitySelection.STEPS;
-let activityIntervalID = 0;
+//TODO: let activityIntervalID = 0;
 
 const INVISIBLE = 0.0;
 const VISIBLE = 0.8;
@@ -67,8 +64,6 @@ clock.initialize("minutes", data => {
   dateLabel.text = data.date;
   // Update appointment
   renderAppointment();
-  // Update battery
-  renderBattery();
 });
 
 battery.onchange = (evt) => {
@@ -81,12 +76,22 @@ appointment.initialize(() => {
 });
 
 display.addEventListener("change", () => {
-  // Update appointment and battery on display on
   if (display.on) {
+    // Update appointment and battery on display on
     renderAppointment();
     renderBattery();
   }
+  else {
+    // Stop updating activity info
+    hideActivity();
+  }
 });
+
+// Hide event when touched
+appointmentsLabel.addEventListener("mousedown", () => {
+  showActivity();
+  updateActivity();
+})
 
 function renderAppointment() {
   // Upate the appointment <text> element
@@ -106,14 +111,14 @@ function hideActivity() {
   activityIcon.style.opacity = INVISIBLE;
   activityLabel.style.opacity = INVISIBLE;
   appointmentsLabel.style.opacity = VISIBLE;
-  clearInterval(activityIntervalID);
+  //TODO: clearInterval(activityIntervalID);
 }
 
 function showActivity() {
   activityIcon.style.opacity = VISIBLE;
   activityLabel.style.opacity = VISIBLE;
   appointmentsLabel.style.opacity = INVISIBLE;
-  activityIntervalID = setInterval(updateActivity, 1500);
+  //TODO: activityIntervalID = setInterval(updateActivity, 1500);
 }
 
 function updateActivity() {
@@ -123,7 +128,6 @@ function updateActivity() {
       activityLabel.text = today.adjusted.distance;
       break;
     case ActivitySelection.FLOORS:
-
       activityIcon.image = "floors.png";
       activityLabel.text = today.adjusted.elevationGain;
       break;
@@ -146,7 +150,10 @@ function renderBattery() {
   const level = Math.floor(battery.chargeLevel / 10) * 10;
   if (level < 20) {
     batteryImage.image = `battery-alert.png`;
-  } else {
+  }
+  else {
     batteryImage.image = `battery-${Math.floor(battery.chargeLevel / 10) * 10}.png`;
   }
 }
+
+renderBattery();
