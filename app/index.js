@@ -27,7 +27,7 @@ const ActivitySelection = {
 }
 
 let activitySelection = ActivitySelection.STEPS;
-let activityIntervalID = 0;
+//TODO: let activityIntervalID = 0;
 
 const INVISIBLE = 0.0;
 const VISIBLE = 0.8;
@@ -111,14 +111,14 @@ function hideActivity() {
   activityIcon.style.opacity = INVISIBLE;
   activityLabel.style.opacity = INVISIBLE;
   appointmentsLabel.style.opacity = VISIBLE;
-  //clearInterval(activityIntervalID);
+  //TODO: clearInterval(activityIntervalID);
 }
 
 function showActivity() {
   activityIcon.style.opacity = VISIBLE;
   activityLabel.style.opacity = VISIBLE;
   appointmentsLabel.style.opacity = INVISIBLE;
-  //activityIntervalID = setInterval(updateActivity, 1500);
+  //TODO: activityIntervalID = setInterval(updateActivity, 1500);
 }
 
 function updateActivity() {
