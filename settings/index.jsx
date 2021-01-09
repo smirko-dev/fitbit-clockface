@@ -22,12 +22,11 @@ function settingsFunc(props) {
                 onSelection={(value) => console.log(value)}
             />
             <ColorSelect
-                label="Color"
                 settingsKey="color"
                 colors={[
                     {color: '#2490DD'},
-                    {color: '#8f32a8'},
-                    {color: '#f5882a'},
+                    {color: '#eb4034'},
+                    {color: '#d9cf1a'},
                     {color: '#2ab0ae'},
                     {color: '#ed1abc'},
                     {color: 'silver'}
