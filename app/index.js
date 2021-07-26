@@ -1,12 +1,15 @@
+import { me } from "appbit";
 import document from "document";
 import { battery } from "power";
 import { display } from "display";
 import { today } from 'user-activity';
 import { me as device } from "device";
+import * as fs from "fs";
 import * as appointment from "./appointment";
 import * as clock from "./clock";
 import * as messaging from "messaging";
 import { fromEpochSec, timeString } from "../common/utils";
+import { settingsType, settingsFile } from "../common/constants";
 
 // Get a handle on the <text> and <image> elements
 const hourLabel = document.getElementById("hourLabel");
@@ -19,14 +22,6 @@ const batteryLabel = document.getElementById("batteryLabel");
 const activityIcon = document.getElementById("activityIcon");
 const activityLabel = document.getElementById("activityLabel");
 
-const ActivitySelection = {
-  DIST: 'distance',
-  FLOORS: 'floors',
-  CAL: 'calories',
-  STEPS: 'steps'
-}
-
-let activitySelection = ActivitySelection.STEPS;
 //TODO: let activityIntervalID = 0;
 
 const INVISIBLE = 0.0;
@@ -40,19 +35,52 @@ else {
   batteryLabel.style.opacity = VISIBLE;
 }
 
-// Update app settings
+// Register for the unload event
+me.onunload = saveSettings;
+
+// Load settings at startup
+let settings = loadSettings();
+applySettings(settings.activity, settings.color);
+
+// Apply and store settings
+function applySettings(activity, color) {
+  if (typeof activity !== 'undefined') {
+    activityIcon.image = `${activity}.png`;
+    settings.activity = activity;
+  }
+  if (typeof color !== 'undefined') {
+    hourLabel.style.fill = color;
+    activityIcon.style.fill = color;
+    settings.color = color;
+  }
+}
+
+// Load settings
+function loadSettings() {
+  try {
+    return fs.readFileSync(settingsFile, settingsType);
+  }
+  catch (ex) {
+    // Default values
+    return {
+      activity: "steps",
+      color: "#2490DD"
+    };
+  }
+}
+
+// Save settings
+function saveSettings() {
+  fs.writeFileSync(settingsFile, settings, settingsType);
+}
+
+// Update settings
 messaging.peerSocket.onmessage = (evt) => {
-  if (evt.data === "distance") {
-    activitySelection = ActivitySelection.DIST;
+  if (evt.data.key === "activity") {
+    applySettings(evt.data.value, settings.color);
   }
-  else if (evt.data === "floors") {
-    activitySelection = ActivitySelection.FLOORS;
-  }
-  else if (evt.data === "calories") {
-    activitySelection = ActivitySelection.CAL;
-  }
-  else {
-    activitySelection = ActivitySelection.STEPS;
+  else if (evt.data.key === "color") {
+    applySettings(settings.activity, evt.data.value);
   }
   renderAppointment();
 }
@@ -122,23 +150,17 @@ function showActivity() {
 }
 
 function updateActivity() {
-  switch (activitySelection) {
-    case ActivitySelection.DIST:
-      activityIcon.image = "distance.png";
-      activityLabel.text = today.adjusted.distance;
-      break;
-    case ActivitySelection.FLOORS:
-      activityIcon.image = "floors.png";
-      activityLabel.text = today.adjusted.elevationGain;
-      break;
-    case ActivitySelection.CAL:
-      activityIcon.image = "calories.png";
-      activityLabel.text = today.adjusted.calories;
-      break;
-    default:
-      activityIcon.image = "steps.png";
-      activityLabel.text = today.adjusted.steps;
-      break;
+  if (settings.activity === 'distance') {
+    activityLabel.text = today.adjusted.distance;
+  }
+  else if (settings.activity === 'floors') {
+    activityLabel.text = today.adjusted.elevationGain;
+  }
+  else if (settings.activity === 'calories') {
+    activityLabel.text = today.adjusted.calories;
+  }
+  else {
+    activityLabel.text = today.adjusted.steps;
   }
 }
 

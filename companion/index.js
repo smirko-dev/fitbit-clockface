@@ -14,7 +14,16 @@ settingsStorage.onchange = function(evt) {
   if (messaging.peerSocket.readyState === messaging.peerSocket.OPEN) {
     if (evt.key === "activity") {
       let data = JSON.parse(evt.newValue);
-      messaging.peerSocket.send(data["values"][0].value);
+      messaging.peerSocket.send({
+        key: evt.key,
+        value: data["values"][0].value
+      });
+    }
+    else {
+      messaging.peerSocket.send({
+        key: evt.key,
+        value: JSON.parse(evt.newValue)
+      });
     }
   }
 }
