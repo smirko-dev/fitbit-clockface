@@ -24,7 +24,7 @@
 
 #dateLabel {
   font-size: 20;
-  font-family: Colfax-Light;
+  font-family: Colfax-Regular;
   text-length: 32;
   text-anchor: start;
   x: 0%;
@@ -34,7 +34,7 @@
 
 #appointmentsLabel {
   font-size: 28;
-  font-family: Colfax-Light;
+  font-family: Colfax-Regular;
   text-length: 128;
   text-anchor: start;
   x: 0%;
@@ -45,7 +45,7 @@
 
 #batteryLabel {
   font-size: 20;
-  font-family: Colfax-Light;
+  font-family: Colfax-Regular;
   text-length: 32;
   text-anchor: start;
   x: 85%;
@@ -55,7 +55,7 @@
 
 #activityLabel {
   font-size: 28;
-  font-family: Colfax-Light;
+  font-family: Colfax-Regular;
   text-length: 32;
   text-anchor: start;
   x: 35%+30;
