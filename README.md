@@ -13,7 +13,7 @@
 This is a simple clock face for Fitbit.
 It comes with
 - time (12/24hr format), date (including weekday)
-- languages: de-DE, en-EN
+- languages: de-DE, en-US
 - battery icon (Ionic: and status in percentage)
 - next calendar event of the current day
 - user activity in case of no events (selectable in settings menu)
