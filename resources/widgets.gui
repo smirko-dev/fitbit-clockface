@@ -1,6 +1,6 @@
 <svg>
   <defs>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.sdk4.css" />
     <link rel="import" href="/mnt/sysassets/widgets_common.gui" />
     <link rel="stylesheet" href="/mnt/sysassets/widgets/dynamic_textarea.css"/>
     <link rel="import" href="/mnt/sysassets/widgets/dynamic_textarea.gui"/>

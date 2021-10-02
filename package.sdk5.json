@@ -1,0 +1,45 @@
+{
+  "name": "compactclock",
+  "version": "1.5.1",
+  "license": "MIT",
+  "devDependencies": {
+    "@fitbit/sdk": "~5.0.0",
+    "@fitbit/sdk-cli": "^1.7.3"
+  },
+  "bugs": {
+    "url": "https://github.com/smirko-dev/fitbit-clockface/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/smirko-dev/fitbit-clockface.git"
+  },
+  "fitbit": {
+    "appUUID": "ae441b73-2660-407f-b796-a98d1d0583a0",
+    "appType": "clockface",
+    "appDisplayName": "CompactClock",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "",
+    "requestedPermissions": [
+      "access_calendar",
+      "run_background",
+      "access_activity"
+    ],
+    "buildTargets": [
+      "atlas",
+      "vulcan"
+    ],
+    "i18n": {
+      "en-US": {
+        "name": "CompactClock"
+      },
+      "de-DE": {
+        "name": "CompactClock"
+      }
+    },
+    "defaultLanguage": "en-US"
+  },
+  "scripts": {
+    "build": "fitbit-build",
+    "debug": "fitbit"
+  }
+}
