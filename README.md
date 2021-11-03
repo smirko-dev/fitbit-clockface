@@ -1,10 +1,11 @@
 # Fitbit Clockface
 
 [![](https://img.shields.io/badge/Fitbit%20App%20Gallery-%2300B0B9?style=flat&logo=fitbit&logoColor=white)](https://gallery.fitbit.com/details/ae441b73-2660-407f-b796-a98d1d0583a0)
+![rating](https://img.shields.io/badge/rating-%204.4-blue)
 ![languages](https://img.shields.io/badge/languages-JavaScript%20|%20CSS-blue)
 ![platform](https://img.shields.io/badge/platforms-Ionic%20|%20Versa%20|%20Versa%202%20|%20Versa%20Lite%20|%20Versa%203%20|%20Sense-silver)
-![version](https://img.shields.io/badge/version-%201.5.2-green)
-[![](https://img.shields.io/badge/license-MIT-green)](https://github.com/smirko-dev/fitbit-clockface/blob/master/LICENSE)
+![version](https://img.shields.io/badge/version-%201.5.2-blue)
+[![](https://img.shields.io/badge/license-MIT-blue)](https://github.com/smirko-dev/fitbit-clockface/blob/master/LICENSE)
 [![FitbitBuild Actions Status](https://github.com/smirko-dev/fitbit-clockface/workflows/FitbitBuild/badge.svg)](https://github.com/smirko-dev/fitbit-clockface/actions)
 [![CodeQL Actions Status](https://github.com/smirko-dev/fitbit-clockface/workflows/CodeQL/badge.svg)](https://github.com/smirko-dev/fitbit-clockface/actions)
 
