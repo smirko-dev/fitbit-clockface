@@ -6,7 +6,8 @@ function settingsFunc(props) {
   let steps = gettext("steps");
   let dist = gettext("dist");
   let floors = gettext("floors");
-  let cal = gettext("cal");
+  let calories = gettext("calories");
+  let azm = gettext("azm");
   return (
     <Page>
         <Section>
@@ -17,7 +18,8 @@ function settingsFunc(props) {
                     { name: `${steps}`, value: 'steps' },
                     { name: `${dist}`, value: 'distance' },
                     { name: `${floors}`, value: 'floors' },
-                    { name: `${cal}`, value: 'calories' }
+                    { name: `${calories}`, value: 'calories' },
+                    { name: `${azm}`, value: 'azm' },
                 ]}
                 onSelection={(value) => console.log(value)}
             />
