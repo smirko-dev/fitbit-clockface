@@ -5,7 +5,7 @@ msgstr "Инфо о деятельности"
 msgid "steps"
 msgstr "Шаги"
 
-msgid "cal"
+msgid "calories"
 msgstr "Калорий"
 
 msgid "dist"
@@ -13,3 +13,6 @@ msgstr "Расстояние"
 
 msgid "floors"
 msgstr "Полы"
+
+msgid "azm"
+msgstr "Active Zone Minutes"
