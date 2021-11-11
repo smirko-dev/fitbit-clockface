@@ -13,3 +13,6 @@ msgstr "Distanz"
 
 msgid "floors"
 msgstr "Etagen"
+
+msgid "azm"
+msgstr "Active Zone Minutes"
