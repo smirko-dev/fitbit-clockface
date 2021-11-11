@@ -5,7 +5,7 @@ msgstr "Activity info"
 msgid "steps"
 msgstr "Steps"
 
-msgid "cal"
+msgid "calories"
 msgstr "Calories"
 
 msgid "dist"
@@ -13,3 +13,6 @@ msgstr "Distance"
 
 msgid "floors"
 msgstr "Floors"
+
+msgid "azm"
+msgstr "Active Zone Minutes"
