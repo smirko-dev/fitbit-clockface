@@ -5,7 +5,7 @@ msgstr "Aktivitäts-Info"
 msgid "steps"
 msgstr "Schritte"
 
-msgid "cal"
+msgid "calories"
 msgstr "Kalorien"
 
 msgid "dist"
