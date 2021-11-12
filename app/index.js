@@ -160,7 +160,7 @@ function updateActivity() {
     activityLabel.text = today.adjusted.calories;
   }
   else if (settings.activity === 'azm') {
-    infoLabel.text = today.adjusted.activeZoneMinutes.total || 0;
+    activityLabel.text = today.adjusted.activeZoneMinutes.total || 0;
   }
   else {
     activityLabel.text = today.adjusted.steps;
