@@ -24,7 +24,7 @@ Find the latest published version in the [Fitbit gallery](https://gallery.fitbit
 
 The clockface is based on https://github.com/Fitbit/sdk-calendar-clock/ and https://github.com/Fitbit/sdk-weather-clock.
 
-Icons are from https://materialdesignicons.com/ ([Apache license version 2.0](https://www.apache.org/licenses/LICENSE-2.0.html)) and from https://github.com/Fitbit/sdk-design-assets.
+Icons are from https://materialdesignicons.com/ ([Apache license version 2.0](https://www.apache.org/licenses/LICENSE-2.0.html)) and from https://github.com/Fitbit/sdk-design-assets ([Design Asset License](https://github.com/Fitbit/sdk-design-assets/blob/master/LICENCE.txt)).
 
 ## Screenshots
 
