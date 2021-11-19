@@ -22,7 +22,8 @@
     "requestedPermissions": [
       "access_calendar",
       "run_background",
-      "access_activity"
+      "access_activity",
+      "access_location"
     ],
     "buildTargets": [
       "atlas",

@@ -13,3 +13,6 @@ msgstr "Distance"
 
 msgid "floors"
 msgstr "Floors"
+
+msgid "weather"
+msgstr "Weather"

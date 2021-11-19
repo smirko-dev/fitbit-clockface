@@ -13,3 +13,6 @@ msgstr "Расстояние"
 
 msgid "floors"
 msgstr "Полы"
+
+msgid "weather"
+msgstr "Погода"

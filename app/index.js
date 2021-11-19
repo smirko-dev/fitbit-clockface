@@ -4,8 +4,10 @@ import { battery } from "power";
 import { display } from "display";
 import { today } from 'user-activity';
 import { me as device } from "device";
+import { units } from "user-settings";
 import * as fs from "fs";
 import * as appointment from "./appointment";
+import * as weather from "./weather";
 import * as clock from "./clock";
 import * as messaging from "messaging";
 import { fromEpochSec, timeString } from "../common/utils";
@@ -19,10 +21,8 @@ const appointmentsLabel = document.getElementById("appointmentsLabel");
 const batteryImage = document.getElementById("batteryImage");
 const batteryLabel = document.getElementById("batteryLabel");
 
-const activityIcon = document.getElementById("activityIcon");
-const activityLabel = document.getElementById("activityLabel");
-
-//TODO: let activityIntervalID = 0;
+const infoIcon = document.getElementById("infoIcon");
+const infoLabel = document.getElementById("infoLabel");
 
 const INVISIBLE = 0.0;
 const VISIBLE = 0.8;
@@ -40,17 +40,22 @@ me.onunload = saveSettings;
 
 // Load settings at startup
 let settings = loadSettings();
-applySettings(settings.activity, settings.color);
+applySettings(settings.info, settings.color);
 
 // Apply and store settings
-function applySettings(activity, color) {
-  if (typeof activity !== 'undefined') {
-    activityIcon.image = `${activity}.png`;
-    settings.activity = activity;
+function applySettings(info, color) {
+  if (typeof info !== 'undefined') {
+    if (info === 'weather') {
+      renderWeather(weather.current());
+    }
+    else {
+      infoIcon.image = `${info}.png`;
+      settings.info = info;
+    }
   }
   if (typeof color !== 'undefined') {
     hourLabel.style.fill = color;
-    activityIcon.style.fill = color;
+    infoIcon.style.fill = color;
     settings.color = color;
   }
 }
@@ -63,7 +68,7 @@ function loadSettings() {
   catch (ex) {
     // Default values
     return {
-      activity: "steps",
+      info: "steps",
       color: "#2490DD"
     };
   }
@@ -76,11 +81,11 @@ function saveSettings() {
 
 // Update settings
 messaging.peerSocket.onmessage = (evt) => {
-  if (evt.data.key === "activity") {
+  if (evt.data.key === "info") {
     applySettings(evt.data.value, settings.color);
   }
   else if (evt.data.key === "color") {
-    applySettings(settings.activity, evt.data.value);
+    applySettings(settings.info, evt.data.value);
   }
   renderAppointment();
 }
@@ -103,6 +108,11 @@ appointment.initialize(() => {
   renderAppointment();
 });
 
+weather.initialize(data => {
+  // Update weather with new data
+  renderWeather(data);
+});
+
 display.addEventListener("change", () => {
   if (display.on) {
     // Update appointment and battery on display on
@@ -110,15 +120,15 @@ display.addEventListener("change", () => {
     renderBattery();
   }
   else {
-    // Stop updating activity info
-    hideActivity();
+    // Stop updating info
+    hideInfo();
   }
 });
 
 // Hide event when touched
 appointmentsLabel.addEventListener("mousedown", () => {
-  showActivity();
-  updateActivity();
+  showInfo();
+  updateInfo();
 })
 
 function renderAppointment() {
@@ -127,40 +137,48 @@ function renderAppointment() {
   if (event) {
     const date = fromEpochSec(event.startDate);
     appointmentsLabel.text = timeString(date) + " " + event.title;
-    hideActivity();
+    hideInfo();
   }
   else {
-    showActivity();
-    updateActivity();
+    showInfo();
+    updateInfo();
   }
 }
 
-function hideActivity() {
-  activityIcon.style.opacity = INVISIBLE;
-  activityLabel.style.opacity = INVISIBLE;
+function renderWeather(data) {
+  data = units.temperature === "F" ? toFahrenheit(data) : data;
+  infoLabel.text = `${data.temperature}\u00B0 ${data.unit}`;
+  infoIcon.image = `${data.icon}`;
+}
+
+function hideInfo() {
+  infoIcon.style.opacity = INVISIBLE;
+  infoLabel.style.opacity = INVISIBLE;
   appointmentsLabel.style.opacity = VISIBLE;
-  //TODO: clearInterval(activityIntervalID);
 }
 
-function showActivity() {
-  activityIcon.style.opacity = VISIBLE;
-  activityLabel.style.opacity = VISIBLE;
+function showInfo() {
+  infoIcon.style.opacity = VISIBLE;
+  infoLabel.style.opacity = VISIBLE;
   appointmentsLabel.style.opacity = INVISIBLE;
-  //TODO: activityIntervalID = setInterval(updateActivity, 1500);
 }
 
-function updateActivity() {
-  if (settings.activity === 'distance') {
-    activityLabel.text = today.adjusted.distance;
+function updateInfo() {
+  if (settings.info === 'distance') {
+    infoLabel.text = today.adjusted.distance;
   }
-  else if (settings.activity === 'floors') {
-    activityLabel.text = today.adjusted.elevationGain;
+  else if (settings.info === 'floors') {
+    infoLabel.text = today.adjusted.elevationGain;
   }
-  else if (settings.activity === 'calories') {
-    activityLabel.text = today.adjusted.calories;
+  else if (settings.info === 'calories') {
+    infoLabel.text = today.adjusted.calories;
+  }
+  else if (settings.info === 'weather') {
+    // TODO weather
+    console.log('updateInfo -> weather not implemented yet');
   }
   else {
-    activityLabel.text = today.adjusted.steps;
+    infoLabel.text = today.adjusted.steps;
   }
 }
 
