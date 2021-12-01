@@ -53,7 +53,7 @@
   fill: white;
 }
 
-#activityLabel {
+#infoLabel {
   font-size: 28;
   font-family: Colfax-Regular;
   text-length: 32;
@@ -63,7 +63,7 @@
   fill: white;
 }
 
-.activityIcon {
+.infoIcon {
   fill: #2490DD
 }
 

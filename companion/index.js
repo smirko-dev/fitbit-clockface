@@ -3,7 +3,7 @@ import * as cbor from "cbor";
 import { me as companion } from "companion";
 import { outbox } from "file-transfer";
 
-import { toEpochSec, findWeatherConditionIcon  } from "../common/utils";
+import { toEpochSec } from "../common/utils";
 import { calendarFile, weatherFile, millisecondsPerMinute } from "../common/constants";
 
 import { settingsStorage } from "settings";
@@ -172,6 +172,8 @@ function findWeatherConditionIcon(condition) {
     case WeatherCondition.SunnyDay:
     case WeatherCondition.Thunderstorms:
     case WeatherCondition.Windy:
-      return '';
+      console.log(`UNUSED WEATHER ICON: ${condition}`);
+      break;
   }
+  return 'thermometer.png';
 }

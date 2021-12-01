@@ -27,6 +27,9 @@ const infoLabel = document.getElementById("infoLabel");
 const INVISIBLE = 0.0;
 const VISIBLE = 0.8;
 
+let WeatherIcon = 'weather-sunny.png';
+let WeatherValue = '0.0';
+
 // Show battery label just for Ionic
 if (device.modelId != 27 ) {
   batteryLabel.style.opacity = INVISIBLE;
@@ -45,13 +48,10 @@ applySettings(settings.info, settings.color);
 // Apply and store settings
 function applySettings(info, color) {
   if (typeof info !== 'undefined') {
-    if (info === 'weather') {
-      renderWeather(weather.current());
-    }
-    else {
+    if (info !== 'weather') {
       infoIcon.image = `${info}.png`;
-      settings.info = info;
     }
+    settings.info = info;
   }
   if (typeof color !== 'undefined') {
     hourLabel.style.fill = color;
@@ -109,8 +109,10 @@ appointment.initialize(() => {
 });
 
 weather.initialize(data => {
-  // Update weather with new data
-  renderWeather(data);
+  console.log(`WEATHER: ${data.icon} - ${data.temperature} ${data.unit} in ${data.location}`);
+  data = units.temperature === "F" ? toFahrenheit(data) : data;
+  WeatherValue = `${data.temperature}\u00B0 ${units.temperature}`;
+  WeatherIcon = `${data.icon}`;
 });
 
 display.addEventListener("change", () => {
@@ -145,12 +147,6 @@ function renderAppointment() {
   }
 }
 
-function renderWeather(data) {
-  data = units.temperature === "F" ? toFahrenheit(data) : data;
-  infoLabel.text = `${data.temperature}\u00B0 ${data.unit}`;
-  infoIcon.image = `${data.icon}`;
-}
-
 function hideInfo() {
   infoIcon.style.opacity = INVISIBLE;
   infoLabel.style.opacity = INVISIBLE;
@@ -174,8 +170,8 @@ function updateInfo() {
     infoLabel.text = today.adjusted.calories;
   }
   else if (settings.info === 'weather') {
-    // TODO weather
-    console.log('updateInfo -> weather not implemented yet');
+    infoLabel.text = WeatherValue;
+    infoIcon.image = WeatherIcon;
   }
   else {
     infoLabel.text = today.adjusted.steps;
