@@ -125,11 +125,12 @@ function findWeatherConditionIcon(condition) {
     case WeatherCondition.MostlyClearNight:
       return 'weather-night.png';
     case WeatherCondition.Cloudy:
+    case WeatherCondition.Overcast:
       return 'weather-cloudy.png';
     case WeatherCondition.Cold:
       return 'weather-snowflake-alert.png';
     case WeatherCondition.Flurries:
-      return '';
+      return 'weather-snowy.png';
     case WeatherCondition.Fog:
       return 'weather-fog.png';
     case WeatherCondition.FreezingRain:
@@ -140,40 +141,50 @@ function findWeatherConditionIcon(condition) {
     case WeatherCondition.Hot:
       return 'weather-sunny-alert.png';
     case WeatherCondition.Ice:
-      return 'weather-snowflake.png';
+      return 'weather-snowflake-alert.png';
     case WeatherCondition.IntermittentCloudsDay:
     case WeatherCondition.MostlyCloudyDay:
       return 'weather-partly-cloudy.png';
     case WeatherCondition.IntermittentCloudsNight:
     case WeatherCondition.MostlyCloudyNight:
       return 'weather-night-partly-cloudy.png';
-    case WeatherCondition.MostlyCloudyWithFlurriesDay:
-    case WeatherCondition.MostlyCloudyWithFlurriesNight:
     case WeatherCondition.MostlyCloudyWithShowersDay:
     case WeatherCondition.MostlyCloudyWithShowersNight:
+    case WeatherCondition.PartlyCloudyWithShowersNight:
+    case WeatherCondition.PartlySunnyWithShowersDay:
+      return 'weather-partly-rainy.png.png';
+    case WeatherCondition.PartlySunnyWithFlurriesDay:
+    case WeatherCondition.MostlyCloudyWithFlurriesDay:
+    case WeatherCondition.MostlyCloudyWithFlurriesNight:
     case WeatherCondition.MostlyCloudyWithSnowDay:
     case WeatherCondition.MostlyCloudyWithSnowNight:
+      return 'weather-partly-snowy.png';
     case WeatherCondition.MostlyCloudyWithThunderstormsDay:
     case WeatherCondition.MostlyCloudyWithThunderstormsNight:
-    case WeatherCondition.MostlySunnyDay:
-    case WeatherCondition.Overcast:
-    case WeatherCondition.PartlyCloudyNight:
-    case WeatherCondition.PartlyCloudyWithShowersNight:
     case WeatherCondition.PartlyCloudyWithThunderstormsNight:
-    case WeatherCondition.PartlySunnyDay:
-    case WeatherCondition.PartlySunnyWithFlurriesDay:
-    case WeatherCondition.PartlySunnyWithShowersDay:
     case WeatherCondition.PartlySunnyWithThunderstormsDay:
-    case WeatherCondition.Rain:
-    case WeatherCondition.RainAndSnow:
-    case WeatherCondition.Showers:
-    case WeatherCondition.Sleet:
-    case WeatherCondition.Snow:
-    case WeatherCondition.SunnyDay:
     case WeatherCondition.Thunderstorms:
+      return 'weather-lightning.png';
+    case WeatherCondition.MostlySunnyDay:
+    case WeatherCondition.PartlySunnyDay:
+      return 'weather-partly-cloudy.png';
+    case WeatherCondition.Rain:
+      return 'weather-rainy.png';
+    case WeatherCondition.RainAndSnow:
+    case WeatherCondition.Sleet:
+      return 'weather-snowy-rainy.png';
+    case WeatherCondition.Showers:
+      return 'weather-pouring.png';
+    case WeatherCondition.Snow:
+      return 'weather-snowflake.png';
+    case WeatherCondition.SunnyDay:
+      return 'weather-sunny.png';
     case WeatherCondition.Windy:
+      return 'weather-windy.png';
+    case WeatherCondition.PartlyCloudyNight:
+      return 'weather-night-partly-cloudy.png';
+    default:
       console.log(`UNUSED WEATHER ICON: ${condition}`);
-      break;
+      return 'thermometer.png';
   }
-  return 'thermometer.png';
 }

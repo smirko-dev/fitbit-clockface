@@ -12,7 +12,7 @@ function settingsFunc(props) {
                     { name: `${gettext("steps")}`, value: 'steps' },
                     { name: `${gettext("dist")}`, value: 'distance' },
                     { name: `${gettext("floors")}`, value: 'floors' },
-                    { name: `${gettext("calories")}`, value: 'calories' },
+                    { name: `${gettext("cal")}`, value: 'calories' },
                     { name: `${gettext("weather")}`, value: 'weather' }
                 ]}
                 onSelection={(value) => console.log(value)}
