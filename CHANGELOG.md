@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Added weather info
+- 
+### Changed
+- Updated from SDK5 to SDK6
 
 ## Version 1.5.2
 

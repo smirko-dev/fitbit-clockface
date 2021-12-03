@@ -43,8 +43,8 @@ jobs:
         path: build/app.fba
         if-no-files-found: error
 
-  build-sdk5:
-    name: Build SDK5
+  build-sdk6:
+    name: Build SDK6
     runs-on: ubuntu-latest
 
     steps:
@@ -56,8 +56,8 @@ jobs:
     - name: Setup node
       uses: actions/setup-node@v1
 
-    - name: Select SDK 5
-      run: cp package.sdk5.json package.json
+    - name: Select SDK 6
+      run: cp package.sdk6.json package.json
 
     - name: Checkout Fitbit SDK
       run: npm add --also=dev @fitbit/sdk

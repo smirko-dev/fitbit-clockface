@@ -16,7 +16,7 @@ It comes with
 - languages: de-DE, en-US
 - battery icon (Ionic: and status in percentage)
 - next calendar event of the current day
-- user activity in case of no events (selectable in settings menu)
+- user activity or weather in case of no events (selectable in settings menu)
 - six color schemes (selectable in settings menu)
 - touch to hide calendar event temporarily
 
@@ -37,7 +37,7 @@ Choose SDK version
 | SDK | Device                            |
 |-----|-----------------------------------|
 | 4   | Versa, Versa Lite, Versa 2, Ionic |
-| 5   | Versa 3, Sense                    |
+| 6   | Versa 3, Sense                    |
 
 ```
 cp package.sdkX.json package.json
