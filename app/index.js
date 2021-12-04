@@ -1,4 +1,4 @@
-import { me } from "appbit";
+import { me as appbit } from "appbit";
 import document from "document";
 import { battery } from "power";
 import { display } from "display";
@@ -28,7 +28,7 @@ const INVISIBLE = 0.0;
 const VISIBLE = 0.8;
 
 let WeatherIcon = 'weather-sunny.png';
-let WeatherValue = '0.0';
+let WeatherValue = 'N/A';
 
 // Show battery label just for Ionic
 if (device.modelId != 27 ) {
@@ -103,17 +103,20 @@ battery.onchange = (evt) => {
   renderBattery();
 }
 
-appointment.initialize(() => {
-  // Update appointment with new data
-  renderAppointment();
-});
+if (appbit.permissions.granted('access_calendar')) {
+  appointment.initialize(() => {
+    renderAppointment();
+  });
+}
 
-weather.initialize(data => {
-  console.log(`WEATHER: ${data.icon} - ${data.temperature} ${data.unit} in ${data.location}`);
-  data = units.temperature === "F" ? toFahrenheit(data) : data;
-  WeatherValue = `${data.temperature}\u00B0 ${units.temperature}`;
-  WeatherIcon = `${data.icon}`;
-});
+if (appbit.permissions.granted('access_location')) {
+    weather.initialize(data => {
+      console.log(`WEATHER: ${data.icon} - ${data.temperature} ${data.unit} in ${data.location}`);
+      data = units.temperature === "F" ? toFahrenheit(data) : data;
+      WeatherValue = `${data.temperature}\u00B0 ${units.temperature}`;
+      WeatherIcon = `${data.icon}`;
+    });
+}
 
 display.addEventListener("change", () => {
   if (display.on) {
@@ -135,15 +138,17 @@ appointmentsLabel.addEventListener("mousedown", () => {
 
 function renderAppointment() {
   // Upate the appointment <text> element
-  let event = appointment.next();
-  if (event) {
-    const date = fromEpochSec(event.startDate);
-    appointmentsLabel.text = timeString(date) + " " + event.title;
-    hideInfo();
-  }
-  else {
-    showInfo();
-    updateInfo();
+  if (appbit.permissions.granted('access_calendar')) {
+    let event = appointment.next();
+    if (event) {
+      const date = fromEpochSec(event.startDate);
+      appointmentsLabel.text = timeString(date) + " " + event.title;
+      hideInfo();
+    }
+    else {
+      showInfo();
+      updateInfo();
+    }
   }
 }
 
@@ -160,21 +165,26 @@ function showInfo() {
 }
 
 function updateInfo() {
-  if (settings.info === 'distance') {
-    infoLabel.text = today.adjusted.distance;
-  }
-  else if (settings.info === 'floors') {
-    infoLabel.text = today.adjusted.elevationGain;
-  }
-  else if (settings.info === 'calories') {
-    infoLabel.text = today.adjusted.calories;
-  }
-  else if (settings.info === 'weather') {
+  if (settings.info === 'weather') {
     infoLabel.text = WeatherValue;
     infoIcon.image = WeatherIcon;
   }
+  else if (appbit.permissions.granted('access_activity')) {
+      if (settings.info === 'distance') {
+        infoLabel.text = today.adjusted.distance;
+      }
+      else if (settings.info === 'floors') {
+        infoLabel.text = today.adjusted.elevationGain;
+      }
+      else if (settings.info === 'calories') {
+        infoLabel.text = today.adjusted.calories;
+      }
+      else {
+        infoLabel.text = today.adjusted.steps;
+      }
+  }
   else {
-    infoLabel.text = today.adjusted.steps;
+    infoLabel.text = 'N/A';
   }
 }
 
