@@ -1,6 +1,6 @@
 
 msgid "title"
-msgstr "Инфо о деятельности"
+msgstr "Инфо"
 
 msgid "steps"
 msgstr "Шаги"
