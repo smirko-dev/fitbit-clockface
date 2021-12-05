@@ -184,7 +184,7 @@ function findWeatherConditionIcon(condition) {
     case WeatherCondition.PartlyCloudyNight:
       return 'weather-night-partly-cloudy.png';
     default:
-      console.log(`UNUSED WEATHER ICON: ${condition}`);
+      console.warn(`Unused weather icon: ${condition}`);
       return 'thermometer.png';
   }
 }

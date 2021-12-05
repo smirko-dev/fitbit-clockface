@@ -15,7 +15,7 @@ function settingsFunc(props) {
                     { name: `${gettext("cal")}`, value: 'calories' },
                     { name: `${gettext("weather")}`, value: 'weather' }
                 ]}
-                onSelection={(value) => console.log(value)}
+                onSelection={(value) => console.log(`Selected info = ${value}`)}
             />
             <ColorSelect
                 settingsKey="color"
@@ -27,7 +27,7 @@ function settingsFunc(props) {
                     {color: '#ed1abc'},
                     {color: 'silver'}
                 ]}
-                onSelection={(color) => console.log(color)}
+                onSelection={(color) => console.log(`Selected color = ${color}`)}
             />
         </Section>
     </Page>
