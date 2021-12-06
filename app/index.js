@@ -39,7 +39,7 @@ else {
 }
 
 // Register for the unload event
-me.onunload = saveSettings;
+appbit.onunload = saveSettings;
 
 // Load settings at startup
 let settings = loadSettings();
@@ -47,6 +47,7 @@ applySettings(settings.info, settings.color);
 
 // Apply and store settings
 function applySettings(info, color) {
+  //DEBUG console.log(`[applySettings] info=${info}, color=${color}`);
   if (typeof info !== 'undefined') {
     if (info !== 'weather') {
       infoIcon.image = `${info}.png`;
@@ -108,6 +109,9 @@ if (appbit.permissions.granted('access_calendar')) {
     renderAppointment();
   });
 }
+else {
+  console.warn('Missing permission: access_calendar');
+}
 
 if (appbit.permissions.granted('access_location')) {
     weather.initialize(data => {
@@ -116,6 +120,9 @@ if (appbit.permissions.granted('access_location')) {
       WeatherValue = `${data.temperature}\u00B0 ${units.temperature}`;
       WeatherIcon = `${data.icon}`;
     });
+}
+else {
+  console.warn('Missing permission: access_location');
 }
 
 display.addEventListener("change", () => {
@@ -144,12 +151,11 @@ function renderAppointment() {
       const date = fromEpochSec(event.startDate);
       appointmentsLabel.text = timeString(date) + " " + event.title;
       hideInfo();
-    }
-    else {
-      showInfo();
-      updateInfo();
+      return;
     }
   }
+  showInfo();
+  updateInfo();
 }
 
 function hideInfo() {
@@ -165,6 +171,7 @@ function showInfo() {
 }
 
 function updateInfo() {
+  //DEBUG console.log(`[updateInfo] info=${settings.info}`);
   if (settings.info === 'weather') {
     infoLabel.text = WeatherValue;
     infoIcon.image = WeatherIcon;
