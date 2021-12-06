@@ -27,7 +27,7 @@ const infoLabel = document.getElementById("infoLabel");
 const INVISIBLE = 0.0;
 const VISIBLE = 0.8;
 
-let WeatherIcon = 'weather-sunny.png';
+let WeatherIcon = 'temperature.png';
 let WeatherValue = 'N/A';
 
 // Show battery label just for Ionic
@@ -111,7 +111,7 @@ if (appbit.permissions.granted('access_calendar')) {
 
 if (appbit.permissions.granted('access_location')) {
     weather.initialize(data => {
-      console.log(`WEATHER: ${data.icon} - ${data.temperature} ${data.unit} in ${data.location}`);
+      //DEBUG console.log(`Weather: ${data.icon} - ${data.temperature} ${data.unit} in ${data.location}`);
       data = units.temperature === "F" ? toFahrenheit(data) : data;
       WeatherValue = `${data.temperature}\u00B0 ${units.temperature}`;
       WeatherIcon = `${data.icon}`;

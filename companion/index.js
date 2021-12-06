@@ -59,8 +59,10 @@ function refreshWeather() {
         console.warn("No data for this location.")
       }
     })
-    .catch((ex) => {
-      console.error(ex);
+    .catch(error => {
+      // Inform the user about the error
+      console.error(error);
+      console.error(error.stack);
     });
 }
 
@@ -70,11 +72,9 @@ function refreshEvents() {
   calendars
     .searchSources()
     .then(results => {
-      // Debug: console.log("All calendar data sources");
       return calendars.searchCalendars();
     })
     .then(results => {
-      // Debug: console.log("All calendars");
       const start = new Date();
       const end = new Date();
       start.setHours(0, 0, 0, 0);
@@ -84,7 +84,6 @@ function refreshEvents() {
     })
     .then(results => {
       results.forEach(event => {
-        // Debug: console.log("All events for the next 24 hours");
         dataEvents.push({
           title: event.title,
           location: event.location,
