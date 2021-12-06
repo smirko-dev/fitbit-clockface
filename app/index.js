@@ -27,7 +27,7 @@ const infoLabel = document.getElementById("infoLabel");
 const INVISIBLE = 0.0;
 const VISIBLE = 0.8;
 
-let WeatherIcon = 'temperature.png';
+let WeatherIcon = 'thermometer.png';
 let WeatherValue = 'N/A';
 
 // Show battery label just for Ionic
