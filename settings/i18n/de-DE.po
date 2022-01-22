@@ -1,4 +1,7 @@
 
+msgid "battery"
+msgstr "Batterie Status"
+
 msgid "title"
 msgstr "Info"
 

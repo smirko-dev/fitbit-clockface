@@ -5,6 +5,10 @@ function settingsFunc(props) {
   return (
     <Page>
         <Section>
+            <Toggle
+                label={`${gettext("battery")}`}
+                settingsKey="battery"
+            />
             <Select 
                 label={`${gettext("title")}`}
                 settingsKey="info"

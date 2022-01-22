@@ -30,23 +30,17 @@ const VISIBLE = 0.8;
 let WeatherIcon = 'thermometer.png';
 let WeatherValue = 'N/A';
 
-// Show battery label just for Ionic
-if (device.modelId != 27 ) {
-  batteryLabel.style.opacity = INVISIBLE;
-}
-else {
-  batteryLabel.style.opacity = VISIBLE;
-}
+let ShowBattery = true;
 
 // Register for the unload event
 appbit.onunload = saveSettings;
 
 // Load settings at startup
 let settings = loadSettings();
-applySettings(settings.info, settings.color);
+applySettings(settings.info, settings.color, settings.battery);
 
 // Apply and store settings
-function applySettings(info, color) {
+function applySettings(info, color, battery) {
   //DEBUG console.log(`[applySettings] info=${info}, color=${color}`);
   if (typeof info !== 'undefined') {
     if (info !== 'weather') {
@@ -59,6 +53,23 @@ function applySettings(info, color) {
     infoIcon.style.fill = color;
     settings.color = color;
   }
+  if (typeof battery !== 'undefined') {
+    settings.battery = battery;
+    ShowBattery = battery;
+    if (ShowBattery) {
+      batteryImage.style.opacity = VISIBLE;
+      if (device.modelId != 27 ) {
+        batteryLabel.style.opacity = INVISIBLE;
+      }
+      else {
+        batteryLabel.style.opacity = VISIBLE;
+      }
+    }
+    else {
+      batteryLabel.style.opacity = INVISIBLE;
+      batteryImage.style.opacity = INVISIBLE;
+    }
+  }
 }
 
 // Load settings
@@ -70,6 +81,7 @@ function loadSettings() {
     // Default values
     return {
       info: "steps",
+      battery: true,
       color: "#2490DD"
     };
   }
@@ -83,10 +95,13 @@ function saveSettings() {
 // Update settings
 messaging.peerSocket.onmessage = (evt) => {
   if (evt.data.key === "info") {
-    applySettings(evt.data.value, settings.color);
+    applySettings(evt.data.value, settings.color, settings.battery);
   }
   else if (evt.data.key === "color") {
-    applySettings(settings.info, evt.data.value);
+    applySettings(settings.info, evt.data.value, settings.battery);
+  }
+  else if (evt.data.key === "battery") {
+    applySettings(settings.info, settings.color, evt.data.value);
   }
   renderAppointment();
 }

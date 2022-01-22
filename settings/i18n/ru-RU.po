@@ -1,4 +1,7 @@
 
+msgid "battery"
+msgstr "Эаряд батареи"
+
 msgid "title"
 msgstr "Инфо"
 
