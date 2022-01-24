@@ -42,7 +42,7 @@ applySettings(settings.activity, settings.color, settings.info);
 
 // Apply and store settings
 function applySettings(activity, color, info) {
-  console.log(`[applySettings] activity=${activity}, color=${color}, info=${info}`);
+  //DEBUG console.log(`[applySettings] activity=${activity}, color=${color}, info=${info}`);
   if (typeof activity !== 'undefined') {
     infoIcon.image = `${activity}.png`;
     settings.activity = activity;
