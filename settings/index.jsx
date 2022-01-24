@@ -5,19 +5,23 @@ function settingsFunc(props) {
   return (
     <Page>
         <Section>
-            <Toggle
-                label={`${gettext("battery")}`}
-                settingsKey="battery"
+            <Select 
+                label={`${gettext("info")}`}
+                settingsKey="info"
+                options={[
+                    { name: `${gettext("none")}`, value: 'none' },
+                    { name: `${gettext("battery")}`, value: 'battery' },
+                    { name: `${gettext("weather")}`, value: 'weather' }
+                ]}
             />
             <Select 
-                label={`${gettext("title")}`}
-                settingsKey="info"
+                label={`${gettext("activity")}`}
+                settingsKey="activity"
                 options={[
                     { name: `${gettext("steps")}`, value: 'steps' },
                     { name: `${gettext("dist")}`, value: 'distance' },
                     { name: `${gettext("floors")}`, value: 'floors' },
-                    { name: `${gettext("cal")}`, value: 'calories' },
-                    { name: `${gettext("weather")}`, value: 'weather' }
+                    { name: `${gettext("cal")}`, value: 'calories' }
                 ]}
             />
             <ColorSelect

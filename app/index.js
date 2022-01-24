@@ -24,50 +24,56 @@ const batteryLabel = document.getElementById("batteryLabel");
 const infoIcon = document.getElementById("infoIcon");
 const infoLabel = document.getElementById("infoLabel");
 
+const weatherLabel = document.getElementById("weatherLabel");
+const weatherImage = document.getElementById("weatherImage");
+
 const INVISIBLE = 0.0;
 const VISIBLE = 0.8;
 
 let WeatherIcon = 'thermometer.png';
 let WeatherValue = 'N/A';
 
-let ShowBattery = true;
-
 // Register for the unload event
 appbit.onunload = saveSettings;
 
 // Load settings at startup
 let settings = loadSettings();
-applySettings(settings.info, settings.color, settings.battery);
+applySettings(settings.activity, settings.color, settings.info);
 
 // Apply and store settings
-function applySettings(info, color, battery) {
-  //DEBUG console.log(`[applySettings] info=${info}, color=${color}`);
-  if (typeof info !== 'undefined') {
-    if (info !== 'weather') {
-      infoIcon.image = `${info}.png`;
-    }
-    settings.info = info;
+function applySettings(activity, color, info) {
+  console.log(`[applySettings] activity=${activity}, color=${color}, info=${info}`);
+  if (typeof activity !== 'undefined') {
+    infoIcon.image = `${activity}.png`;
+    settings.activity = activity;
   }
   if (typeof color !== 'undefined') {
     hourLabel.style.fill = color;
     infoIcon.style.fill = color;
+    weatherImage.style.fill = color;
     settings.color = color;
   }
-  if (typeof battery !== 'undefined') {
-    settings.battery = battery;
-    ShowBattery = battery;
-    if (ShowBattery) {
+  if (typeof info !== 'undefined') {
+    settings.info = info;
+    if (info === 'battery') {
+      weatherImage.style.opacity = INVISIBLE;
+      weatherLabel.style.opacity = INVISIBLE;
       batteryImage.style.opacity = VISIBLE;
-      if (device.modelId != 27 ) {
-        batteryLabel.style.opacity = INVISIBLE;
-      }
-      else {
+      if (device.modelId === 27 ) {
         batteryLabel.style.opacity = VISIBLE;
       }
     }
-    else {
-      batteryLabel.style.opacity = INVISIBLE;
+    else if (info === 'weather') {
       batteryImage.style.opacity = INVISIBLE;
+      batteryLabel.style.opacity = INVISIBLE;
+      weatherImage.style.opacity = VISIBLE;
+      weatherLabel.style.opacity = VISIBLE;
+    }
+    else {
+      batteryImage.style.opacity = INVISIBLE;
+      batteryLabel.style.opacity = INVISIBLE;
+      weatherImage.style.opacity = INVISIBLE;
+      weatherLabel.style.opacity = INVISIBLE;
     }
   }
 }
@@ -80,9 +86,9 @@ function loadSettings() {
   catch (ex) {
     // Default values
     return {
-      info: "steps",
-      battery: true,
-      color: "#2490DD"
+      activity: "steps",
+      color: "#2490DD",
+      info: "battery"
     };
   }
 }
@@ -94,14 +100,14 @@ function saveSettings() {
 
 // Update settings
 messaging.peerSocket.onmessage = (evt) => {
-  if (evt.data.key === "info") {
-    applySettings(evt.data.value, settings.color, settings.battery);
+  if (evt.data.key === "activity") {
+    applySettings(evt.data.value, settings.color, settings.info);
   }
   else if (evt.data.key === "color") {
-    applySettings(settings.info, evt.data.value, settings.battery);
+    applySettings(settings.activity, evt.data.value, settings.info);
   }
-  else if (evt.data.key === "battery") {
-    applySettings(settings.info, settings.color, evt.data.value);
+  else if (evt.data.key === "info") {
+    applySettings(settings.activity, settings.color, evt.data.value);
   }
   renderAppointment();
 }
@@ -132,8 +138,10 @@ if (appbit.permissions.granted('access_location')) {
     weather.initialize(data => {
       //DEBUG console.log(`Weather: ${data.icon} - ${data.temperature} ${data.unit} in ${data.location}`);
       data = units.temperature === "F" ? toFahrenheit(data) : data;
-      WeatherValue = `${data.temperature}\u00B0 ${units.temperature}`;
+      WeatherValue = `${data.temperature}\u00B0${units.temperature}`;
+      weatherLabel.text = WeatherValue;
       WeatherIcon = `${data.icon}`;
+      weatherImage.image = WeatherIcon;
     });
 }
 else {
@@ -187,11 +195,7 @@ function showInfo() {
 
 function updateInfo() {
   //DEBUG console.log(`[updateInfo] info=${settings.info}`);
-  if (settings.info === 'weather') {
-    infoLabel.text = WeatherValue;
-    infoIcon.image = WeatherIcon;
-  }
-  else if (appbit.permissions.granted('access_activity')) {
+  if (appbit.permissions.granted('access_activity')) {
       if (settings.info === 'distance') {
         infoLabel.text = today.adjusted.distance;
       }

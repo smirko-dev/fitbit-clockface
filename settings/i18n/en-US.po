@@ -1,9 +1,18 @@
 
+msgid "info"
+msgstr "Info"
+
+msgid "none"
+msgstr "None"
+
 msgid "battery"
 msgstr "Battery status"
 
-msgid "title"
-msgstr "Info"
+msgid "weather"
+msgstr "Weather"
+
+msgid "activity"
+msgstr "Activity"
 
 msgid "steps"
 msgstr "Steps"

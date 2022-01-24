@@ -14,7 +14,14 @@ import { weather, WeatherCondition } from "weather";
 // Update user settings 
 settingsStorage.onchange = function(evt) {
   if (messaging.peerSocket.readyState === messaging.peerSocket.OPEN) {
-    if (evt.key === "info") {
+    if (evt.key === "activity") {
+      let data = JSON.parse(evt.newValue);
+      messaging.peerSocket.send({
+        key: evt.key,
+        value: data["values"][0].value
+      });
+    }
+    else if (evt.key === "info") {
       let data = JSON.parse(evt.newValue);
       messaging.peerSocket.send({
         key: evt.key,

@@ -23,11 +23,21 @@
 }
 
 #dateLabel {
-  font-size: 20;
+  font-size: 21;
   font-family: Colfax-Regular;
   text-length: 32;
   text-anchor: start;
   x: 0%;
+  y: 10%;
+  fill: white;
+}
+
+#weatherLabel {
+  font-size: 21;
+  font-family: Colfax-Regular;
+  text-length: 32;
+  text-anchor: end;
+  x: 100%;
   y: 10%;
   fill: white;
 }
@@ -68,5 +78,9 @@
 }
 
 .batteryIcon {
+  fill: #FFFFFF
+}
+
+.weatherIcon {
   fill: #FFFFFF
 }

@@ -1,9 +1,18 @@
 
+msgid "info"
+msgstr "Инфо"
+
+msgid "none"
+msgstr "Никто"
+
 msgid "battery"
 msgstr "Эаряд батареи"
 
-msgid "title"
-msgstr "Инфо"
+msgid "weather"
+msgstr "Погода"
+
+msgid "activity"
+msgstr "Мероприятия"
 
 msgid "steps"
 msgstr "Шаги"
