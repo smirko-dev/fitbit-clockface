@@ -18,11 +18,12 @@ const hourLabel = document.getElementById("hourLabel");
 const minuteLabel = document.getElementById("minuteLabel");
 const dateLabel = document.getElementById("dateLabel");
 const appointmentsLabel = document.getElementById("appointmentsLabel");
+
 const batteryImage = document.getElementById("batteryImage");
 const batteryLabel = document.getElementById("batteryLabel");
 
-const infoIcon = document.getElementById("infoIcon");
-const infoLabel = document.getElementById("infoLabel");
+const activityIcon = document.getElementById("activityIcon");
+const activityLabel = document.getElementById("activityLabel");
 
 const weatherLabel = document.getElementById("weatherLabel");
 const weatherImage = document.getElementById("weatherImage");
@@ -60,12 +61,12 @@ applySettings(settings.activity, settings.color, settings.info);
 function applySettings(activity, color, info) {
   //DEBUG console.log(`[applySettings] activity=${activity}, color=${color}, info=${info}`);
   if (typeof activity !== 'undefined') {
-    infoIcon.image = `${activity}.png`;
+    activityIcon.image = `${activity}.png`;
     settings.activity = activity;
   }
   if (typeof color !== 'undefined') {
     hourLabel.style.fill = color;
-    infoIcon.style.fill = color;
+    activityIcon.style.fill = color;
     weatherImage.style.fill = color;
     settings.color = color;
   }
@@ -145,19 +146,14 @@ appointment.initialize(() => {
   renderAppointment();
 });
 
-if (appbit.permissions.granted('access_location')) {
-    weather.initialize(data => {
-      //DEBUG console.log(`Weather: ${data.icon} - ${data.temperature} ${data.unit} in ${data.location}`);
-      data = units.temperature === "F" ? toFahrenheit(data) : data;
-      WeatherValue = `${data.temperature}\u00B0${units.temperature}`;
-      weatherLabel.text = WeatherValue;
-      WeatherIcon = `${data.icon}`;
-      weatherImage.image = WeatherIcon;
-    });
-}
-else {
-  console.warn('Missing permission: access_location');
-}
+weather.initialize(data => {
+  //DEBUG console.log(`Weather: ${data.icon} - ${data.temperature} ${data.unit} in ${data.location}`);
+  data = units.temperature === "F" ? toFahrenheit(data) : data;
+  WeatherValue = `${data.temperature}\u00B0${units.temperature}`;
+  weatherLabel.text = WeatherValue;
+  WeatherIcon = `${data.icon}`;
+  weatherImage.image = WeatherIcon;
+});
 
 display.addEventListener("change", () => {
   if (display.on) {
@@ -166,15 +162,15 @@ display.addEventListener("change", () => {
     renderBattery();
   }
   else {
-    // Stop updating info
-    hideInfo();
+    // Stop updating activity
+    hideActivity();
   }
 });
 
 // Hide event when touched
 appointmentsLabel.addEventListener("mousedown", () => {
-  showInfo();
-  updateInfo();
+  showActivity();
+  updateActivity();
 })
 
 function renderAppointment() {
@@ -183,40 +179,39 @@ function renderAppointment() {
   if (event) {
     const date = fromEpochSec(event.startDate);
     appointmentsLabel.text = timeString(date) + " " + event.title;
-    hideInfo();
-    return;
+    hideActivity();
   }
   else {
-    showInfo();
-    updateInfo();
+    showActivity();
+    updateActivity();
   }
 }
 
-function hideInfo() {
-  infoIcon.style.opacity = INVISIBLE;
-  infoLabel.style.opacity = INVISIBLE;
+function hideActivity() {
+  activityIcon.style.opacity = INVISIBLE;
+  activityLabelLabel.style.opacity = INVISIBLE;
   appointmentsLabel.style.opacity = VISIBLE;
 }
 
-function showInfo() {
-  infoIcon.style.opacity = VISIBLE;
-  infoLabel.style.opacity = VISIBLE;
+function showActivity() {
+  activityIcon.style.opacity = VISIBLE;
+  activityLabel.style.opacity = VISIBLE;
   appointmentsLabel.style.opacity = INVISIBLE;
 }
 
-function updateInfo() {
-  //DEBUG console.log(`[updateInfo] info=${settings.info}`);
+function updateActivity() {
+  //DEBUG console.log(`[updateActivity] info=${settings.info}`);
   if (settings.info === 'distance') {
-    infoLabel.text = today.adjusted.distance;
+    activityLabel.text = today.adjusted.distance;
   }
   else if (settings.info === 'floors') {
-    infoLabel.text = today.adjusted.elevationGain;
+    activityLabel.text = today.adjusted.elevationGain;
   }
   else if (settings.info === 'calories') {
-    infoLabel.text = today.adjusted.calories;
+    activityLabel.text = today.adjusted.calories;
   }
   else {
-    infoLabel.text = today.adjusted.steps;
+    activityLabel.text = today.adjusted.steps;
   }
 }
 

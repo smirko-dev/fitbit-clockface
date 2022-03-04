@@ -41,7 +41,7 @@ function loadData() {
 
 function existsData() {
   if (data === undefined) {
-    console.warn("No data found.");
+    console.warn("Weather: No data found.");
     return false;
   }
   return true;

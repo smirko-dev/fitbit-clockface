@@ -113,14 +113,14 @@ function refreshEvents() {
 // Send data
 function sendCalendarFile(data) {
   outbox.enqueue(calendarFile, cbor.encode(data)).catch(error => {
-    console.warn(`Failed to enqueue data. Error: ${error}`);
+    console.warn(`Failed to enqueue calendar data. Error: ${error}`);
   });
 }
 
 // Send data
 function sendWeatherFile(data) {
   outbox.enqueue(weatherFile, cbor.encode(data)).catch(error => {
-    console.warn(`Failed to enqueue data. Error: ${error}`);
+    console.warn(`Failed to enqueue weather data. Error: ${error}`);
   });
 }
 
