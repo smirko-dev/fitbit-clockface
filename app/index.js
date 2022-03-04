@@ -33,6 +33,22 @@ const VISIBLE = 0.8;
 let WeatherIcon = 'thermometer.png';
 let WeatherValue = 'N/A';
 
+const CalendarPermissionGranted = appbit.permissions.granted('access_calendar');
+const ActivityPermissionGranted = appbit.permissions.granted('access_activity');
+const LocationPermissionGranted = appbit.permissions.granted('access_location');
+
+if (!CalendarPermissionGranted) {
+  console.warn('Missing permission: access_location');
+}
+
+if (!ActivityPermissionGranted) {
+  console.warn('Missing permission: access_location');
+}
+
+if (!LocationPermissionGranted) {
+  console.warn('Missing permission: access_location');
+}
+
 // Register for the unload event
 appbit.onunload = saveSettings;
 
