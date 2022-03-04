@@ -125,14 +125,9 @@ battery.onchange = (evt) => {
   renderBattery();
 }
 
-if (appbit.permissions.granted('access_calendar')) {
-  appointment.initialize(() => {
-    renderAppointment();
-  });
-}
-else {
-  console.warn('Missing permission: access_calendar');
-}
+appointment.initialize(() => {
+  renderAppointment();
+});
 
 if (appbit.permissions.granted('access_location')) {
     weather.initialize(data => {
@@ -168,17 +163,17 @@ appointmentsLabel.addEventListener("mousedown", () => {
 
 function renderAppointment() {
   // Upate the appointment <text> element
-  if (appbit.permissions.granted('access_calendar')) {
-    let event = appointment.next();
-    if (event) {
-      const date = fromEpochSec(event.startDate);
-      appointmentsLabel.text = timeString(date) + " " + event.title;
-      hideInfo();
-      return;
-    }
+  let event = appointment.next();
+  if (event) {
+    const date = fromEpochSec(event.startDate);
+    appointmentsLabel.text = timeString(date) + " " + event.title;
+    hideInfo();
+    return;
   }
-  showInfo();
-  updateInfo();
+  else {
+    showInfo();
+    updateInfo();
+  }
 }
 
 function hideInfo() {
@@ -195,22 +190,17 @@ function showInfo() {
 
 function updateInfo() {
   //DEBUG console.log(`[updateInfo] info=${settings.info}`);
-  if (appbit.permissions.granted('access_activity')) {
-      if (settings.info === 'distance') {
-        infoLabel.text = today.adjusted.distance;
-      }
-      else if (settings.info === 'floors') {
-        infoLabel.text = today.adjusted.elevationGain;
-      }
-      else if (settings.info === 'calories') {
-        infoLabel.text = today.adjusted.calories;
-      }
-      else {
-        infoLabel.text = today.adjusted.steps;
-      }
+  if (settings.info === 'distance') {
+    infoLabel.text = today.adjusted.distance;
+  }
+  else if (settings.info === 'floors') {
+    infoLabel.text = today.adjusted.elevationGain;
+  }
+  else if (settings.info === 'calories') {
+    infoLabel.text = today.adjusted.calories;
   }
   else {
-    infoLabel.text = 'N/A';
+    infoLabel.text = today.adjusted.steps;
   }
 }
 
