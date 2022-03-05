@@ -41,6 +41,7 @@ settingsStorage.onchange = function(evt) {
 companion.wakeInterval = 15 * millisecondsPerMinute;
 companion.addEventListener("wakeinterval", refreshData);
 
+// Update all data
 function refreshData() {
   refreshEvents();
   refreshWeather();

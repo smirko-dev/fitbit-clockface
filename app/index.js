@@ -28,12 +28,15 @@ const activityLabel = document.getElementById("activityLabel");
 const weatherLabel = document.getElementById("weatherLabel");
 const weatherImage = document.getElementById("weatherImage");
 
+// Visibility values
 const INVISIBLE = 0.0;
 const VISIBLE = 0.8;
 
+// Current weather status
 let WeatherIcon = 'thermometer.png';
 let WeatherValue = 'N/A';
 
+// Permissions
 const CalendarPermissionGranted = appbit.permissions.granted('access_calendar');
 const ActivityPermissionGranted = appbit.permissions.granted('access_activity');
 const LocationPermissionGranted = appbit.permissions.granted('access_location');
@@ -129,23 +132,26 @@ messaging.peerSocket.onmessage = (evt) => {
   renderAppointment();
 }
 
+// Clock callback
 clock.initialize("minutes", data => {
-  // Update <text> elements with each tick
   hourLabel.text = data.hours;
   minuteLabel.text = data.minutes;
   dateLabel.text = data.date;
-  // Update appointment
+  
   renderAppointment();
 });
 
+// Battery change callback
 battery.onchange = (evt) => {
   renderBattery();
 }
 
+// Appointment callback
 appointment.initialize(() => {
   renderAppointment();
 });
 
+// Weather callback
 weather.initialize(data => {
   //DEBUG console.log(`Weather: ${data.icon} - ${data.temperature} ${data.unit} in ${data.location}`);
   data = units.temperature === "F" ? toFahrenheit(data) : data;
@@ -155,6 +161,7 @@ weather.initialize(data => {
   weatherImage.image = WeatherIcon;
 });
 
+// Display callback
 display.addEventListener("change", () => {
   if (display.on) {
     // Update appointment and battery on display on
@@ -167,38 +174,43 @@ display.addEventListener("change", () => {
   }
 });
 
-// Hide event when touched
+// Appointment touch callback
 appointmentsLabel.addEventListener("mousedown", () => {
   showActivity();
   updateActivity();
 })
 
+// Update appointment
 function renderAppointment() {
-  // Upate the appointment <text> element
   let event = appointment.next();
   if (event) {
     const date = fromEpochSec(event.startDate);
     appointmentsLabel.text = timeString(date) + " " + event.title;
+    // Hide activity
     hideActivity();
   }
   else {
+    // Show and update activity
     showActivity();
     updateActivity();
   }
 }
 
+// Hide activity
 function hideActivity() {
   activityIcon.style.opacity = INVISIBLE;
   activityLabelLabel.style.opacity = INVISIBLE;
   appointmentsLabel.style.opacity = VISIBLE;
 }
 
+// Show activity
 function showActivity() {
   activityIcon.style.opacity = VISIBLE;
   activityLabel.style.opacity = VISIBLE;
   appointmentsLabel.style.opacity = INVISIBLE;
 }
 
+// Update activity
 function updateActivity() {
   //DEBUG console.log(`[updateActivity] info=${settings.info}`);
   if (settings.info === 'distance') {
@@ -215,6 +227,7 @@ function updateActivity() {
   }
 }
 
+// Update battery
 function renderBattery() {
   // Update the battery <text> element every time when battery changed
   batteryLabel.text = Math.floor(battery.chargeLevel) + "%";
