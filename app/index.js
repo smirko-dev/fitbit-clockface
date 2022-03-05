@@ -82,6 +82,7 @@ function applySettings(activity, color, info) {
       if (device.modelId === 27 ) {
         batteryLabel.style.opacity = VISIBLE;
       }
+      renderBattery();
     }
     else if (info === 'weather') {
       batteryImage.style.opacity = INVISIBLE;
@@ -231,6 +232,12 @@ function updateActivity() {
 function renderBattery() {
   // Update the battery <text> element every time when battery changed
   batteryLabel.text = Math.floor(battery.chargeLevel) + "%";
+  if (device.modelId != 27 ) {
+    batteryLabel.style.opacity = INVISIBLE;
+  }
+  else {
+    batteryLabel.style.opacity = VISIBLE;
+  }
   
   // Update battery icon
   const level = Math.floor(battery.chargeLevel / 10) * 10;
