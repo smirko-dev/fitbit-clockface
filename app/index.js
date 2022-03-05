@@ -199,7 +199,7 @@ function renderAppointment() {
 // Hide activity
 function hideActivity() {
   activityIcon.style.opacity = INVISIBLE;
-  activityLabelLabel.style.opacity = INVISIBLE;
+  activityLabel.style.opacity = INVISIBLE;
   appointmentsLabel.style.opacity = VISIBLE;
 }
 
