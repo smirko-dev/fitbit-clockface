@@ -2,6 +2,8 @@
   <text id="hourLabel" />
   <text id="minuteLabel" />
   <text id="dateLabel" opacity=".8" />
+  <text id="weatherLabel" opacity=".8" />
+  <image id="weatherImage" href="thermometer.png" x="300-38" y="32" width="38" height="38" opacity=".8" class="activityIcon" />
   <textarea id="appointmentsLabel" opacity=".8" pointer-events="visible" />
   <image id="batteryImage" href="battery-alert.png" x="270" y="4%" width="24" height="24" opacity=".6" class="batteryIcon" />
   <text id="batteryLabel" opacity=".8" />

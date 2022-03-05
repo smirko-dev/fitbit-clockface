@@ -1,6 +1,6 @@
 {
   "name": "compactclock",
-  "version": "1.5.1",
+  "version": "1.7.0",
   "license": "MIT",
   "devDependencies": {
     "@fitbit/sdk": "~4.3.0",
@@ -22,7 +22,8 @@
     "requestedPermissions": [
       "access_calendar",
       "run_background",
-      "access_activity"
+      "access_activity",
+      "access_location"
     ],
     "buildTargets": [
       "higgs",

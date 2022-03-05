@@ -1,14 +1,14 @@
 import { inbox } from "file-transfer";
 import { readFileSync } from "fs";
 
-import { dataFile, dataType } from "../common/constants";
+import { calendarFile, calendarType } from "../common/constants";
 import { toEpochSec } from "../common/utils";
 
 let data;
-let handleCalendarUpdatedCallback;
+let handleCallback;
 
 export function initialize(callback) {
-  handleCalendarUpdatedCallback = callback;
+  handleCallback = callback;
   data = loadData();
   inbox.addEventListener("newfile", fileHandler);
   fileHandler();
@@ -43,14 +43,17 @@ function fileHandler() {
   let fileName;
   do {
     fileName = inbox.nextFile();
-    data = loadData();
-    updatedData();
+    if (fileName === calendarFile) {
+      console.log('Load ' + fileName);
+      data = loadData();
+      updatedData();
+    }
   } while (fileName);
 }
 
 function loadData() {
   try {
-    return readFileSync(`/private/data/${dataFile}`, dataType);
+    return readFileSync(`/private/data/${calendarFile}`, calendarType);
   } catch (ex) {
     console.error(`Appointment: loadData() failed. ${ex}`);
     return;
@@ -66,7 +69,7 @@ function existsData() {
 }
 
 function updatedData() {
-  if (typeof handleCalendarUpdatedCallback === "function" && existsData()) {
-    handleCalendarUpdatedCallback();
+  if (typeof handleCallback === "function" && existsData()) {
+    handleCallback();
   }
 }

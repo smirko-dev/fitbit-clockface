@@ -1,6 +1,18 @@
 
-msgid "title"
-msgstr "Инфо о деятельности"
+msgid "info"
+msgstr "Инфо"
+
+msgid "none"
+msgstr "Никто"
+
+msgid "battery"
+msgstr "Эаряд батареи"
+
+msgid "weather"
+msgstr "Погода"
+
+msgid "activity"
+msgstr "Мероприятия"
 
 msgid "steps"
 msgstr "Шаги"
@@ -13,3 +25,6 @@ msgstr "Расстояние"
 
 msgid "floors"
 msgstr "Полы"
+
+msgid "weather"
+msgstr "Погода"

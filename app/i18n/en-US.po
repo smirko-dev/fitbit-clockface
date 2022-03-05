@@ -21,37 +21,37 @@ msgid "saturday"
 msgstr "Saturday"
 
 msgid "january"
-msgstr "January"
+msgstr "Jan"
 
 msgid "february"
-msgstr "February"
+msgstr "Feb"
 
 msgid "march"
-msgstr "March"
+msgstr "Mar"
 
 msgid "april"
-msgstr "April"
+msgstr "Apr"
 
 msgid "may"
 msgstr "May"
 
 msgid "june"
-msgstr "June"
+msgstr "Jun"
 
 msgid "july"
-msgstr "July"
+msgstr "Jul"
 
 msgid "august"
-msgstr "August"
+msgstr "Aug"
 
 msgid "september"
-msgstr "September"
+msgstr "Sep"
 
 msgid "october"
-msgstr "October"
+msgstr "Oct"
 
 msgid "november"
-msgstr "November"
+msgstr "Nov"
 
 msgid "december"
-msgstr "December"
+msgstr "Dec"

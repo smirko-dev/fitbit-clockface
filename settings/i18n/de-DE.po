@@ -1,6 +1,18 @@
 
-msgid "title"
-msgstr "Aktivitäts-Info"
+msgid "info"
+msgstr "Info"
+
+msgid "none"
+msgstr "None"
+
+msgid "battery"
+msgstr "Batterie Status"
+
+msgid "weather"
+msgstr "Wetter"
+
+msgid "activity"
+msgstr "Aktivität"
 
 msgid "steps"
 msgstr "Schritte"
@@ -13,3 +25,6 @@ msgstr "Distanz"
 
 msgid "floors"
 msgstr "Etagen"
+
+msgid "weather"
+msgstr "Wetter"

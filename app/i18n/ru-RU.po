@@ -21,37 +21,37 @@ msgid "saturday"
 msgstr "суббота"
 
 msgid "january"
-msgstr "январь"
+msgstr "янв"
 
 msgid "february"
-msgstr "февраль"
+msgstr "фев"
 
 msgid "march"
-msgstr "март"
+msgstr "мар"
 
 msgid "april"
-msgstr "апрель"
+msgstr "апр"
 
 msgid "may"
 msgstr "май"
 
 msgid "june"
-msgstr "июнь"
+msgstr "июн"
 
 msgid "july"
-msgstr "июль"
+msgstr "июл"
 
 msgid "august"
-msgstr "август"
+msgstr "авг"
 
 msgid "september"
-msgstr "сентябрь"
+msgstr "сент"
 
 msgid "october"
-msgstr "октябрь"
+msgstr "окт"
 
 msgid "november"
-msgstr "ноябрь"
+msgstr "ноя"
 
 msgid "december"
-msgstr "декабрь"
+msgstr "дек"

@@ -9,6 +9,14 @@ export function zeroPad(i) {
   return i;
 }
 
+// Convert celcius to fahrenheit
+export function toFahrenheit(data) {
+  if (data.unit.toLowerCase() === "celsius") {
+     data.temperature =  Math.round((data.temperature * 1.8) + 32.0);
+     data.unit = "Fahrenheit";
+  }  
+  return data;
+}
 // Return day as a string
 export function dayString(day) {
   if (day == 1) {
@@ -19,18 +27,6 @@ export function dayString(day) {
   }
   else if (day == 3) {
     return "3rd"
-  }
-  if (day == 21) {
-    return "21st"
-  }
-  else if (day == 22) {
-    return "22nd"
-  }
-  else if (day == 23) {
-    return "23rd"
-  }
-  if (day == 31) {
-    return "31st"
   }
   return day.toString() + "th";
 }

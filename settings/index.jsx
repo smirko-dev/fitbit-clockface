@@ -2,24 +2,27 @@
 import { gettext } from "i18n";
 
 function settingsFunc(props) {
-  let title = gettext("title");
-  let steps = gettext("steps");
-  let dist = gettext("dist");
-  let floors = gettext("floors");
-  let cal = gettext("cal");
   return (
     <Page>
         <Section>
             <Select 
-                label={`${title}`}
+                label={`${gettext("info")}`}
+                settingsKey="info"
+                options={[
+                    { name: `${gettext("none")}`, value: 'none' },
+                    { name: `${gettext("battery")}`, value: 'battery' },
+                    { name: `${gettext("weather")}`, value: 'weather' }
+                ]}
+            />
+            <Select 
+                label={`${gettext("activity")}`}
                 settingsKey="activity"
                 options={[
-                    { name: `${steps}`, value: 'steps' },
-                    { name: `${dist}`, value: 'distance' },
-                    { name: `${floors}`, value: 'floors' },
-                    { name: `${cal}`, value: 'calories' }
+                    { name: `${gettext("steps")}`, value: 'steps' },
+                    { name: `${gettext("dist")}`, value: 'distance' },
+                    { name: `${gettext("floors")}`, value: 'floors' },
+                    { name: `${gettext("cal")}`, value: 'calories' }
                 ]}
-                onSelection={(value) => console.log(value)}
             />
             <ColorSelect
                 settingsKey="color"
@@ -31,7 +34,6 @@ function settingsFunc(props) {
                     {color: '#ed1abc'},
                     {color: 'silver'}
                 ]}
-                onSelection={(color) => console.log(color)}
             />
         </Section>
     </Page>
