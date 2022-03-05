@@ -79,9 +79,6 @@ function applySettings(activity, color, info) {
       weatherImage.style.opacity = INVISIBLE;
       weatherLabel.style.opacity = INVISIBLE;
       batteryImage.style.opacity = VISIBLE;
-      if (device.modelId === 27 ) {
-        batteryLabel.style.opacity = VISIBLE;
-      }
       renderBattery();
     }
     else if (info === 'weather') {
