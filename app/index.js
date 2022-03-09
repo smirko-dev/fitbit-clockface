@@ -164,7 +164,7 @@ function renderWeather() {
     weatherLabel.text = `${data.temperature}\u00B0${units.temperature}`;
     weatherImage.image = `${data.icon}`;
   }
-});
+}
 
 // Display callback
 display.addEventListener("change", () => {
@@ -238,10 +238,10 @@ function renderBattery() {
   // Update the battery <text> element every time when battery changed
   batteryLabel.text = Math.floor(battery.chargeLevel) + "%";
   if (device.modelId != 27) {
-      batteryLabel.style.opacity = INVISIBLE;
+    batteryLabel.style.opacity = INVISIBLE;
   }
   else {
-      batteryLabel.style.opacity = VISIBLE;
+    batteryLabel.style.opacity = VISIBLE;
   }
   
   // Update battery icon
