@@ -79,14 +79,14 @@ function applySettings(activity, color, info) {
       weatherImage.style.opacity = INVISIBLE;
       weatherLabel.style.opacity = INVISIBLE;
       batteryImage.style.opacity = VISIBLE;
-      renderBattery();
+      updateBattery();
     }
     else if (info === 'weather') {
       batteryImage.style.opacity = INVISIBLE;
       batteryLabel.style.opacity = INVISIBLE;
       weatherImage.style.opacity = VISIBLE;
       weatherLabel.style.opacity = VISIBLE;
-      renderWeather();
+      updateWeather();
     }
     else {
       batteryImage.style.opacity = INVISIBLE;
@@ -128,7 +128,7 @@ messaging.peerSocket.onmessage = (evt) => {
   else if (evt.data.key === "info") {
     applySettings(settings.activity, settings.color, evt.data.value);
   }
-  renderAppointment();
+  updateAppointment();
 }
 
 // Clock callback
@@ -137,26 +137,26 @@ clock.initialize("minutes", data => {
   minuteLabel.text = data.minutes;
   dateLabel.text = data.date;
   
-  renderAppointment();
+  updateAppointment();
 });
 
 // Battery change callback
 battery.onchange = (evt) => {
-  renderBattery();
+  updateBattery();
 }
 
 // Appointment callback
 appointment.initialize(() => {
-  renderAppointment();
+  updateAppointment();
 });
 
 // Weather callback
 weather.initialize(data => {
-  renderWeather();
+  updateWeather();
 });
 
 // Update weather
-function renderWeather() {
+function updateWeather() {
   let data = weather.current();
   if (data) {
     //DEBUG console.log(`Weather: ${data.icon} - ${data.temperature} ${data.unit} in ${data.location}`);
@@ -170,9 +170,9 @@ function renderWeather() {
 display.addEventListener("change", () => {
   if (display.on) {
     // Update content on display on
-    renderAppointment();
-    renderBattery();
-    renderWeather();
+    updateAppointment();
+    updateBattery();
+    updateWeather();
   }
   else {
     // Stop updating activity
@@ -187,7 +187,7 @@ appointmentsLabel.addEventListener("mousedown", () => {
 })
 
 // Update appointment
-function renderAppointment() {
+function updateAppointment() {
   let event = appointment.next();
   if (event) {
     const date = fromEpochSec(event.startDate);
@@ -234,7 +234,7 @@ function updateActivity() {
 }
 
 // Update battery
-function renderBattery() {
+function updateBattery() {
   // Update the battery <text> element every time when battery changed
   batteryLabel.text = Math.floor(battery.chargeLevel) + "%";
   if (device.modelId != 27) {
@@ -254,4 +254,4 @@ function renderBattery() {
   }
 }
 
-renderBattery();
+updateBattery();
