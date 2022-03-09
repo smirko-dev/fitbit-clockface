@@ -33,8 +33,8 @@ const INVISIBLE = 0.0;
 const VISIBLE = 0.8;
 
 // Current weather status
-let WeatherIcon = 'thermometer.png';
-let WeatherValue = 'N/A';
+weatherImage.image = 'thermometer.png';
+weatherLabel.text = 'N/A';
 
 // Permissions
 const CalendarPermissionGranted = appbit.permissions.granted('access_calendar');
@@ -79,7 +79,9 @@ function applySettings(activity, color, info) {
       weatherImage.style.opacity = INVISIBLE;
       weatherLabel.style.opacity = INVISIBLE;
       batteryImage.style.opacity = VISIBLE;
-      renderBattery();
+      if (device.modelId === 27 ) {
+        batteryLabel.style.opacity = VISIBLE;
+      }
     }
     else if (info === 'weather') {
       batteryImage.style.opacity = INVISIBLE;
@@ -151,12 +153,18 @@ appointment.initialize(() => {
 
 // Weather callback
 weather.initialize(data => {
-  //DEBUG console.log(`Weather: ${data.icon} - ${data.temperature} ${data.unit} in ${data.location}`);
-  data = units.temperature === "F" ? toFahrenheit(data) : data;
-  WeatherValue = `${data.temperature}\u00B0${units.temperature}`;
-  weatherLabel.text = WeatherValue;
-  WeatherIcon = `${data.icon}`;
-  weatherImage.image = WeatherIcon;
+  renderWeather();
+});
+
+// Update weather
+function renderWeather() {
+  let data = weather.current();
+  if (data) {
+    //DEBUG console.log(`Weather: ${data.icon} - ${data.temperature} ${data.unit} in ${data.location}`);
+    data = units.temperature === "F" ? toFahrenheit(data) : data;
+    weatherLabel.text = `${data.temperature}\u00B0${units.temperature}`;
+    weatherImage.image = `${data.icon}`;
+  }
 });
 
 // Display callback
@@ -165,6 +173,7 @@ display.addEventListener("change", () => {
     // Update appointment and battery on display on
     renderAppointment();
     renderBattery();
+    renderWeather();
   }
   else {
     // Stop updating activity
@@ -197,7 +206,7 @@ function renderAppointment() {
 // Hide activity
 function hideActivity() {
   activityIcon.style.opacity = INVISIBLE;
-  activityLabel.style.opacity = INVISIBLE;
+  activityLabelLabel.style.opacity = INVISIBLE;
   appointmentsLabel.style.opacity = VISIBLE;
 }
 
@@ -229,12 +238,6 @@ function updateActivity() {
 function renderBattery() {
   // Update the battery <text> element every time when battery changed
   batteryLabel.text = Math.floor(battery.chargeLevel) + "%";
-  if (device.modelId != 27 ) {
-    batteryLabel.style.opacity = INVISIBLE;
-  }
-  else {
-    batteryLabel.style.opacity = VISIBLE;
-  }
   
   // Update battery icon
   const level = Math.floor(battery.chargeLevel / 10) * 10;
