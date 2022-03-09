@@ -79,15 +79,14 @@ function applySettings(activity, color, info) {
       weatherImage.style.opacity = INVISIBLE;
       weatherLabel.style.opacity = INVISIBLE;
       batteryImage.style.opacity = VISIBLE;
-      if (device.modelId === 27 ) {
-        batteryLabel.style.opacity = VISIBLE;
-      }
+      renderBattery();
     }
     else if (info === 'weather') {
       batteryImage.style.opacity = INVISIBLE;
       batteryLabel.style.opacity = INVISIBLE;
       weatherImage.style.opacity = VISIBLE;
       weatherLabel.style.opacity = VISIBLE;
+      renderWeather();
     }
     else {
       batteryImage.style.opacity = INVISIBLE;
@@ -170,7 +169,7 @@ function renderWeather() {
 // Display callback
 display.addEventListener("change", () => {
   if (display.on) {
-    // Update appointment and battery on display on
+    // Update content on display on
     renderAppointment();
     renderBattery();
     renderWeather();
@@ -206,7 +205,7 @@ function renderAppointment() {
 // Hide activity
 function hideActivity() {
   activityIcon.style.opacity = INVISIBLE;
-  activityLabelLabel.style.opacity = INVISIBLE;
+  activityLabel.style.opacity = INVISIBLE;
   appointmentsLabel.style.opacity = VISIBLE;
 }
 
@@ -238,6 +237,12 @@ function updateActivity() {
 function renderBattery() {
   // Update the battery <text> element every time when battery changed
   batteryLabel.text = Math.floor(battery.chargeLevel) + "%";
+  if (device.modelId != 27) {
+      batteryLabel.style.opacity = INVISIBLE;
+  }
+  else {
+      batteryLabel.style.opacity = VISIBLE;
+  }
   
   // Update battery icon
   const level = Math.floor(battery.chargeLevel / 10) * 10;
