@@ -19,14 +19,14 @@ export function toFahrenheit(data) {
 }
 // Return day as a string
 export function dayString(day) {
-  if (day == 1) {
-    return "1st"
+  if (day == 1 || day == 21 || day == 31) {
+    return `${day}st`;
   }
-  else if (day == 2) {
-    return "2nd"
+  else if (day == 2 || day == 22) {
+    return `${day}nd`;
   }
-  else if (day == 3) {
-    return "3rd"
+  else if (day == 3 || day == 23) {
+    return `${day}rd`;
   }
   return day.toString() + "th";
 }
