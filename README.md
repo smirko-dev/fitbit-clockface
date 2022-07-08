@@ -7,6 +7,7 @@
 [![](https://img.shields.io/badge/license-MIT-blue)](https://github.com/smirko-dev/fitbit-clockface/blob/master/LICENSE)
 [![FitbitBuild Actions Status](https://github.com/smirko-dev/fitbit-clockface/workflows/FitbitBuild/badge.svg)](https://github.com/smirko-dev/fitbit-clockface/actions)
 [![CodeQL Actions Status](https://github.com/smirko-dev/fitbit-clockface/workflows/CodeQL/badge.svg)](https://github.com/smirko-dev/fitbit-clockface/actions)
+[![Github All Releases](https://img.shields.io/github/downloads/smirko-dev/fitbit-clockface/total.svg)](https://github.com/smirko-dev/fitbit-clockface/releases)
 
 ## Description
 
