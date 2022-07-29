@@ -39,6 +39,13 @@ Icons are from https://materialdesignicons.com/ ([Apache license version 2.0](ht
 
 ## How to build
 
+Clone the repository
+
+```
+git clone git@github.com:smirko-dev/fitbit-clockface.git
+cd fitbit-homeassistant
+```
+
 Choose SDK version
 
 | SDK | Device                            |
@@ -50,10 +57,9 @@ Choose SDK version
 cp package.sdkX.json package.json
 ```
 
-Run Fitbit CLI build
+Setup SDK and build the application
+
 ```
-git clone git@github.com:smirko-dev/fitbit-clockface.git
-cd fitbit-clockface
 npm add --also=dev @fitbit/sdk
 npm add --also=dev @fitbit/sdk-cli
 npx fitbit-build generate-appid
