@@ -1,7 +1,7 @@
 import clock from "clock";
 import { preferences, locale } from "user-settings";
 import { gettext } from "i18n";
-import * as util from "./utils";
+import * as util from "../common/utils";
 
 let handleClockTickCallback;
 let ampm = "";

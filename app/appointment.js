@@ -1,7 +1,7 @@
 import { inbox } from "file-transfer";
 import { readFileSync } from "fs";
 
-import { calendarFile, calendarType } from "./constants";
+import { calendarFile, calendarType } from "../common/constants";
 import { toEpochSec } from "../common/utils";
 
 let data;

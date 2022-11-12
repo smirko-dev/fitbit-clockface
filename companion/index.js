@@ -9,7 +9,7 @@ import { calendarFile, weatherFile, millisecondsPerMinute } from "../common/cons
 import { settingsStorage } from "settings";
 import * as messaging from "messaging";
 
-import { weather, WeatherCondition } from "../common/weather";
+//import { weather, WeatherCondition } from ".weather";
 
 // Update user settings 
 settingsStorage.onchange = function(evt) {

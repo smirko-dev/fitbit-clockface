@@ -1,7 +1,7 @@
 import { inbox } from "file-transfer";
 import { readFileSync } from "fs";
 
-import { weatherFile, weatherType } from "./constants";
+import { weatherFile, weatherType } from "../common/constants";
 
 let data;
 let handleCallback;
