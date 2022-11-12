@@ -29,7 +29,7 @@ It comes with
 
 Find the latest published version in the [Fitbit gallery](https://gallery.fitbit.com/details/ae441b73-2660-407f-b796-a98d1d0583a0).
 
-The clockface is based on https://github.com/Fitbit/sdk-calendar-clock/ and https://github.com/Fitbit/sdk-weather-clock.
+The clockface is based on [sdk-calendar-clock](https://github.com/Fitbit/sdk-calendar-clock) ([MIT License](https://github.com/Fitbit/sdk-calendar-clock/blob/master/LICENCE)) and [sdk-weather-clock](https://github.com/Fitbit/sdk-weather-clock) ([MIT License](https://github.com/Fitbit/sdk-weather-clock/blob/master/LICENCE)).
 
 Icons are from https://materialdesignicons.com/ ([Apache license version 2.0](https://www.apache.org/licenses/LICENSE-2.0.html)) and from https://github.com/Fitbit/sdk-design-assets ([Design Asset License](https://github.com/Fitbit/sdk-design-assets/blob/master/LICENCE.txt)).
 
